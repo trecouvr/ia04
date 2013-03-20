@@ -11,7 +11,7 @@ public class ChatMultRecvBehaviour extends CyclicBehaviour {
 		MessageTemplate mt = MessageTemplate.MatchReplyWith("mult");
 		ACLMessage message = myAgent.receive(mt);
 		if (message != null) {
-			ACLMessage req = new ACLMessage(ACLMessage.REQUEST);
+			ACLMessage req = new ACLMessage(ACLMessage.INFORM);
 			req.setContent(message.getContent());
 			req.setReplyWith("chat");
 			((ChatAgent) myAgent).sendAll(req);

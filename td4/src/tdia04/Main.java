@@ -10,7 +10,7 @@ import jade.wrapper.AgentController;
 
 public class Main {
 
-	public static Sudoku sudoku=new Sudoku("grille");
+	public static Sudoku sudoku=new Sudoku("grille3");
 	
 	public static void main(String[] args) {
 		Runtime rt=Runtime.instance();

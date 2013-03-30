@@ -4,23 +4,50 @@ import java.util.ArrayList;
 
 
 public class Cellule {
-	public int valeur;
-	public ArrayList<Integer> valeurs_possibles=new ArrayList<Integer>();
+	protected int mValeur;
+	protected ArrayList<Integer> mValeursPossibles=new ArrayList<Integer>();
 	
 	public Cellule(int v){
-		valeur=v;
+		mValeur=v;
 		if (v==0)
 		for (int i=1; i<10; ++i){
-			valeurs_possibles.add(i);
+			mValeursPossibles.add(i);
 		}
 	}
 	
 	public synchronized void removeValsPossibles(ArrayList<Integer> vals){
-		valeurs_possibles.removeAll(vals);
+		mValeursPossibles.removeAll(vals);
+	}
+	
+	public synchronized boolean valIsPossible(int val){
+		return mValeursPossibles.contains(val);
+	}
+	
+	public synchronized int getBinaryPossibles(){
+		int a = 0;
+		for (int i : mValeursPossibles){
+			a += (1 << i);
+		}
+		return a;
+	}
+	
+	public int numberOfPossible(){
+		return mValeursPossibles.size();
 	}
 	
 	public void setVal(int val){
-		valeur = val;
-		valeurs_possibles.clear();
+		mValeur = val;
+		mValeursPossibles.clear();
+	}
+	
+	public int getVal() {
+		return mValeur;
+	}
+	
+	public void setValWithLastValPossible() throws Exception{
+		if (mValeursPossibles.size() != 1){
+			throw new Exception("mValeursPossibles.size() == "+ mValeursPossibles.size());
+		}
+		setVal(mValeursPossibles.get(0));
 	}
 }

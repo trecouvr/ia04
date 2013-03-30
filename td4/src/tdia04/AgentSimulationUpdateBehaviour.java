@@ -15,7 +15,7 @@ public class AgentSimulationUpdateBehaviour extends WakerBehaviour {
 	protected void onWake() {
 		super.onWake();
 		
-		Main.sudoku.afficher_tab();
+		Main.sudoku.afficherTab();
 		System.out.println("\n");
 		
 		ACLMessage req = new ACLMessage(ACLMessage.REQUEST);
@@ -28,6 +28,6 @@ public class AgentSimulationUpdateBehaviour extends WakerBehaviour {
 		
 		if (!Main.sudoku.isDone())
 			myAgent.addBehaviour(new AgentSimulationUpdateBehaviour(myAgent, 1000));
-		else Main.sudoku.afficher_tab();
+		else Main.sudoku.afficherTab();
 	}
 }

@@ -27,15 +27,14 @@ public class Sudoku {
 	}
 	
 
-	public void afficher_tab() {
+	public void afficherTab() {
 		for(Cellule[] ligne : tab){
 			for(Cellule v : ligne){
-				System.out.print(v.valeur+" ");
+				System.out.print(v.getVal()+" ");
 			}
 			System.out.print("\n");
 		}
 	}
-	
 	
 	public Cellule[] getCellulesForRank(int r){
 		Cellule[] c = null;
@@ -63,7 +62,7 @@ public class Sudoku {
 	public boolean isDone(){
 		for (Cellule[] cells : tab){
 			for (Cellule c : cells){
-				if (c.valeur == 0)
+				if (c.mValeur == 0)
 					return false;
 				
 			}

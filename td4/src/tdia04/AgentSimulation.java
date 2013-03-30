@@ -12,7 +12,7 @@ public class AgentSimulation extends Agent {
 		super.setup();
 		this.addBehaviour(new AgentSimulationBehaviour());
 		this.addBehaviour(new AgentSimulationUpdateBehaviour(this, 1000));
-		Main.sudoku.afficher_tab();
+		Main.sudoku.afficherTab();
 	}
 	
 }

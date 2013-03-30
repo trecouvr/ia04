@@ -15,6 +15,7 @@ public class AgentSimulationUpdateBehaviour extends WakerBehaviour {
 	protected void onWake() {
 		super.onWake();
 		
+		//Main.sudoku.afficherTabMore();
 		Main.sudoku.afficherTab();
 		System.out.println("\n");
 		

@@ -36,6 +36,24 @@ public class Sudoku {
 		}
 	}
 	
+	public void afficherTabMore(){
+		for(Cellule[] ligne : tab){
+			for(Cellule v : ligne){
+				System.out.print(v.getVal()+" ");
+				for (int i=1; i<10; ++i){
+					if (v.valIsPossible(i)){
+						System.out.print(i);
+					}
+					else{
+						System.out.print(" ");
+					}
+				}
+				System.out.print("|");
+			}
+			System.out.print("\n");
+		}
+	}
+	
 	public Cellule[] getCellulesForRank(int r){
 		Cellule[] c = null;
 		if (0 <= r && r < 9){

@@ -25,7 +25,7 @@ public class AgentAnalyseBehaviour extends CyclicBehaviour {
 				// la valeur
 				for (Cellule c : cells){
 					if (c.getVal() == 0 && c.numberOfPossible() == 1){
-						System.out.println("Je ("+this+") vais set "+c+" parce que il ne reste plus que une valeur possible");
+						System.out.println(""+myAgent+" vais set "+c+" parce que il ne reste plus que une valeur possible");
 						try {
 							c.setValWithLastValPossible();
 						} catch (Exception e) {
@@ -54,13 +54,14 @@ public class AgentAnalyseBehaviour extends CyclicBehaviour {
 						}
 					}
 					if (cc != null){
-						System.out.println("Je ("+this+") vais set "+cc+" à "+i+" parce que c'est le seul endroit ou je peux mettre cette valeur");
+						System.out.println(""+myAgent+" vais set "+cc+" à "+i+" parce que c'est le seul endroit ou je peux mettre cette valeur");
 						cc.setVal(i);
 					}
 				}
 				// si deux valeurs ne sont possiles que dans deux cellules, 
-				// alors on les retirent des valeurs possibles
-				/*for (Cellule cell : cells) {
+				// alors on les retirent des valeurs possibles des autres
+				// cellules
+				for (Cellule cell : cells) {
 					if (cell.getVal() != 0 && cell.numberOfPossible() == 2){
 						Cellule cc = null;
 						int b = cell.getBinaryPossibles();
@@ -82,13 +83,15 @@ public class AgentAnalyseBehaviour extends CyclicBehaviour {
 									valsToRemove.add(i);
 								}
 							}
+							System.out.println(""+myAgent+" vais remove "+valsToRemove.toString()+" de certaines cellules.");
 							for (Cellule c : cells){
-								c.removeValsPossibles(valsToRemove);
+								if (c != cell && c != cc){
+									c.removeValsPossibles(valsToRemove);
+								}
 							}
 						}
 					}
 				}
-				*/
 				cleanSudoku();
 			}
 		}

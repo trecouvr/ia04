@@ -9,6 +9,7 @@ import jade.domain.FIPAAgentManagement.ServiceDescription;
 import jade.lang.acl.ACLMessage;
 
 public class AgentAnalyse extends Agent {
+	
 	@Override
 	protected void setup() {
 		super.setup();
@@ -34,4 +35,6 @@ public class AgentAnalyse extends Agent {
 		
 		this.addBehaviour(new AgentAnalyseBehaviour());
 	}
+
+	
 }

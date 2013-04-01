@@ -16,7 +16,7 @@ public class Sudoku {
 			int i=0, j=0;
 			for(i=0;i<9;i++){
 				for(j=0;j<9;j++){
-					tab[i][j]=new Cellule(sc.nextInt());
+					tab[i][j]=new Cellule(sc.nextInt(),i,j);
 				}
 			}
 			
@@ -56,15 +56,18 @@ public class Sudoku {
 	
 	public Cellule[] getCellulesForRank(int r){
 		Cellule[] c = null;
+		// O..8 lignes
 		if (0 <= r && r < 9){
 			c = tab[r];
 		}
+		// 9..17 colonnes
 		else if (9 <= r && r < 18){
 			c = new Cellule[9];
 			for (int i=0; i<9; ++i){
 				c[i] = tab[i][r-9];
 			}
 		}
+		// 18..26 carrés
 		else {
 			c = new Cellule[9];
 			int r0 = r-18;

@@ -4,11 +4,16 @@ import java.util.ArrayList;
 
 
 public class Cellule {
+
 	protected int mValeur;
 	protected ArrayList<Integer> mValeursPossibles=new ArrayList<Integer>();
+	protected int l;
+	protected int c;
 	
-	public Cellule(int v){
+	public Cellule(int v, int l, int c){
 		mValeur=v;
+		this.l = l;
+		this.c = c;
 		if (v==0)
 		for (int i=1; i<10; ++i){
 			mValeursPossibles.add(i);
@@ -49,5 +54,10 @@ public class Cellule {
 			throw new Exception("mValeursPossibles.size() == "+ mValeursPossibles.size());
 		}
 		setVal(mValeursPossibles.get(0));
+	}
+	
+	@Override
+	public String toString() {
+		return "Cellule [mValeur=" + mValeur + ", l=" + l + ", c=" + c + "]";
 	}
 }

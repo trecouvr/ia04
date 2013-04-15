@@ -1,0 +1,3 @@
+main=true
+gui=false
+port=8066

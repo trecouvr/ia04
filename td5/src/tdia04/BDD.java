@@ -62,8 +62,6 @@ public class BDD extends Agent {
 	}
 	
 	public Resource getPersonFromFirstName(String name){
-		//return model.getResource(td5Prefix+name);
-		
 		Property firstname=model.getProperty(foafPrefix+"firstname");
 		ExtendedIterator<Statement> it = model.listStatements(new SimpleSelector((Resource)null,firstname,name));
 		System.out.println(it.hasNext());

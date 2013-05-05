@@ -1,0 +1,40 @@
+@prefix td5:    <http://xmlns.com/td5/0.1/> .
+@prefix dc:      <http://purl.org/dc/elements/1.1/> .
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix wot:     <http://xmlns.com/wot/0.1/> .
+@prefix foaf:    <http://xmlns.com/foaf/0.1/> .
+@prefix owl:     <http://www.w3.org/2002/07/owl#> .
+@prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix vs:      <http://www.w3.org/2003/06/sw-vocab-status/ns#> .
+@prefix lgdo:      <http://linkedgeodata.org/ontology/> .
+@prefix country:      <http://linkedgeodata.org/triplify/> .
+
+
+td5:pierre    rdfs:type foaf:Person;
+    foaf:firstname    "Pierre";
+    foaf:birthday    "04-01";
+    foaf:topic_interest    td5:marie;
+    foaf:knows        td5:Paul, td5:Jack, td5:Marie.
+
+td5:paul    rdfs:type foaf:Person;
+    foaf:firstname    "Paul";
+    foaf:birthday    "05-01";
+    foaf:knows        td5:pierre, td5:jack;
+    foaf:topic_interest    country:node435981993.
+
+td5:jack    rdfs:type foaf:Person;
+    foaf:firstname    "Jack";
+    foaf:birthday    "06-01";
+    foaf:topic_interest    td5:paul, country:node435981993;
+    foaf:knows        td5:pierre, td5:paul.
+
+td5:marie    rdfs:type foaf:Person;
+    foaf:firstname    "Marie";
+    foaf:birthday    "07-01";
+    foaf:knows        td5:pierre, td5:emilie.
+
+td5:emilie    rdfs:type foaf:Person;
+    foaf:firstname    "Emilie";
+    foaf:birthday    "08-01";
+    foaf:topic_interest    td5:paul, country:node435981993;
+    foaf:knows        td5:marie.

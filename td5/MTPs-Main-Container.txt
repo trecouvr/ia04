@@ -1,1 +1,1 @@
-http://oddonaga-hz-0.etu.utc:7778/acc
+http://192.168.1.95:7778/acc

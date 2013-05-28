@@ -1,7 +1,7 @@
 package td_ia04;
 import sim.display.Console;
-import sim.display.GUIState;
-import sim.engine.SimState;
+import td_ia04.Beings;
+import td_ia04.BeingsWithUI;
 
 public class BeingsMain {
 

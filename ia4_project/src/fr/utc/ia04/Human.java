@@ -3,7 +3,7 @@ package fr.utc.ia04;
 import sim.engine.SimState;
 import sim.util.Int2D;
 
-public class Human extends MySteppable {
+public class Human extends Agent {
 	private static final long serialVersionUID = -597396855800601330L;
 	
 	/*
@@ -24,13 +24,14 @@ public class Human extends MySteppable {
 	
 	public Human(Int2D location) {
 		super(location);
-		// TODO Auto-generated constructor stub
+		this.modules.add(new Metabolisme(this));
+		this.modules.add(new Perception(this));
+		this.modules.add(new Decision(this));
 	}
 
 	@Override
 	public void step(SimState arg0) {
-		// TODO Auto-generated method stub
-
+		super.step(arg0);
 	}
 
 	public double getFoodEnergy() {
@@ -55,6 +56,12 @@ public class Human extends MySteppable {
 
 	public void setSocialEnergy(double socialEnergy) {
 		this.socialEnergy = socialEnergy;
+	}
+
+	@Override
+	protected void doAction() {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

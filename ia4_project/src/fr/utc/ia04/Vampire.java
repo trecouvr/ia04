@@ -3,7 +3,7 @@ package fr.utc.ia04;
 import sim.engine.SimState;
 import sim.util.Int2D;
 
-public class Vampire extends MySteppable {
+public class Vampire extends Agent {
 	private static final long serialVersionUID = -3640169757194966570L;
 	
 	/*
@@ -18,8 +18,7 @@ public class Vampire extends MySteppable {
 
 	@Override
 	public void step(SimState arg0) {
-		// TODO Auto-generated method stub
-
+		super.step(arg0);
 	}
 
 	public double getFoodEnergy() {
@@ -28,6 +27,12 @@ public class Vampire extends MySteppable {
 
 	public void setFoodEnergy(double foodEnergy) {
 		this.foodEnergy = foodEnergy;
+	}
+
+	@Override
+	protected void doAction() {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

@@ -47,7 +47,7 @@ public class Beings extends SimState {
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public void addAgent(Class clss, Int2D location) throws NoSuchMethodException, SecurityException, InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {
 		Constructor constructor = clss.getConstructor(Int2D.class);
-		MySteppable agent = (MySteppable)constructor.newInstance(location);
+		Agent agent = (Agent)constructor.newInstance(location);
 		yard.set(agent.x,agent.y,agent);
 		Stoppable stoppable=schedule.scheduleRepeating(agent);
 		agent.stoppable=stoppable;

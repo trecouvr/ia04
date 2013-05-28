@@ -3,7 +3,7 @@ package fr.utc.ia04;
 import sim.engine.SimState;
 import sim.util.Int2D;
 
-public class FastFood extends MySteppable {
+public class FastFood extends Agent {
 	private static final long serialVersionUID = -3416294164695473946L;
 
 	public FastFood(Int2D location) {
@@ -11,10 +11,20 @@ public class FastFood extends MySteppable {
 		// TODO Auto-generated constructor stub
 	}
 
+
+
 	@Override
-	public void step(SimState arg0) {
+	protected void doAction() {
 		// TODO Auto-generated method stub
 		
 	}
+
+
+
+	@Override
+	public void step(SimState arg0) {
+		super.step(arg0);
+	}
+
 
 }

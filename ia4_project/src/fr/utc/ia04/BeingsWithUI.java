@@ -1,6 +1,7 @@
 package fr.utc.ia04;
 
 import java.awt.Color;
+import java.awt.Graphics2D;
 
 import javax.swing.JFrame;
 
@@ -8,6 +9,7 @@ import sim.display.Controller;
 import sim.display.Display2D;
 import sim.display.GUIState;
 import sim.engine.SimState;
+import sim.portrayal.DrawInfo2D;
 import sim.portrayal.grid.ObjectGridPortrayal2D;
 import sim.portrayal.simple.OvalPortrayal2D;
 
@@ -37,7 +39,7 @@ public class BeingsWithUI extends GUIState {
 		yardPortrayal.setPortrayalForClass(Vampire.class, getVampirePortrayal());
 		yardPortrayal.setPortrayalForClass(FastFood.class, getFastFoodPortrayal());
 		display.reset();
-		display.setBackdrop(Color.yellow);
+		display.setBackdrop(Color.white);
 		display.repaint();
 	}
 	
@@ -53,8 +55,14 @@ public class BeingsWithUI extends GUIState {
 	}
 
 	private OvalPortrayal2D getHumanPortrayal() {
-		OvalPortrayal2D r = new OvalPortrayal2D(1.4);
-		r.paint = Color.RED;
+		OvalPortrayal2D r = new OvalPortrayal2D(1.2){
+			@Override
+			public void draw(Object o, Graphics2D g, DrawInfo2D info){
+				Human h = (Human)o;
+				this.paint=Color.RED;
+				super.draw(o,g,info);
+			}
+		};
 		r.filled = true;
 		return r;
 	}

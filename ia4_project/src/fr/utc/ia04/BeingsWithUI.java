@@ -36,7 +36,6 @@ public class BeingsWithUI extends GUIState {
 		Beings beings = (Beings) state;
 		yardPortrayal.setField(beings.yard );
 		yardPortrayal.setPortrayalForClass(Human.class, getHumanPortrayal());
-		yardPortrayal.setPortrayalForClass(Vampire.class, getVampirePortrayal());
 		yardPortrayal.setPortrayalForClass(FastFood.class, getFastFoodPortrayal());
 		display.reset();
 		display.setBackdrop(Color.white);
@@ -63,13 +62,6 @@ public class BeingsWithUI extends GUIState {
 				super.draw(o,g,info);
 			}
 		};
-		r.filled = true;
-		return r;
-	}
-	
-	private OvalPortrayal2D getVampirePortrayal() {
-		OvalPortrayal2D r = new OvalPortrayal2D(1.4);
-		r.paint = Color.BLACK;
 		r.filled = true;
 		return r;
 	}

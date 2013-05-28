@@ -26,9 +26,9 @@ public class Beings extends SimState {
 			addAgent(Human.class);
 			addAgent(Human.class);
 			addAgent(Human.class);
-			addAgent(Vampire.class);
-			addAgent(Vampire.class);
-			addAgent(Vampire.class);
+			addAgent(Human.class);
+			addAgent(Human.class);
+			addAgent(Human.class);
 			addAgent(FastFood.class);
 			addAgent(FastFood.class);
 			addAgent(FastFood.class);

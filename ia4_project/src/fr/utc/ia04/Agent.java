@@ -15,11 +15,6 @@ public abstract class Agent implements Steppable {
 	
 	protected ArrayList<Module> modules;
 	
-	// Jauges
-	protected float energy=50;
-	protected float awake=50; // fatigue
-	protected float social=50;
-	
 	protected Behaviour behaviour;
 	
 	
@@ -33,16 +28,9 @@ public abstract class Agent implements Steppable {
 
 	public void step(SimState arg0) {
 		for (Module m : modules) m.preAction((Beings)arg0);
-		//behaviour.doAction(); // faire lÕaction de ce tour
+		//behaviour.doAction(); // faire lï¿½action de ce tour
 		for (Module m : modules) m.postAction((Beings)arg0);
-		
-		if(awake==0 || energy==0 || social==0)
-			meurt((Beings)arg0);
 	}
-	
-	protected abstract void doAction();
-
-
 
 	public String toString(){
 		return this.getClass().getName();

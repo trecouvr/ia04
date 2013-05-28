@@ -11,16 +11,6 @@ public class FastFood extends Agent {
 		// TODO Auto-generated constructor stub
 	}
 
-
-
-	@Override
-	protected void doAction() {
-		// TODO Auto-generated method stub
-		
-	}
-
-
-
 	@Override
 	public void step(SimState arg0) {
 		super.step(arg0);

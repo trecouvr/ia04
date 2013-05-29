@@ -1,9 +1,12 @@
-package fr.utc.ia04;
+package fr.utc.ia04.simulation;
 
 import java.awt.Color;
 import java.awt.Graphics2D;
 
 import javax.swing.JFrame;
+
+import fr.utc.ia04.agent.FastFood;
+import fr.utc.ia04.agent.Human;
 
 import sim.display.Controller;
 import sim.display.Display2D;

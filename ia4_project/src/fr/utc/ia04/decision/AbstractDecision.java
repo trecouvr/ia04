@@ -1,8 +1,12 @@
-package fr.utc.ia04;
+package fr.utc.ia04.decision;
 
-public class Decision extends Module {
+import fr.utc.ia04.Module;
+import fr.utc.ia04.agent.Agent;
+import fr.utc.ia04.simulation.Beings;
 
-	public Decision(Agent a) {
+public class AbstractDecision extends Module {
+
+	public AbstractDecision(Agent a) {
 		super(a);
 		// TODO Auto-generated constructor stub
 	}

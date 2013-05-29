@@ -1,7 +1,11 @@
-package fr.utc.ia04;
+package fr.utc.ia04.simulation;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
+
+import fr.utc.ia04.agent.Agent;
+import fr.utc.ia04.agent.FastFood;
+import fr.utc.ia04.agent.Human;
 
 import sim.engine.SimState;
 import sim.engine.Stoppable;
@@ -12,8 +16,7 @@ public class Beings extends SimState {
 	private static final long serialVersionUID = -7476975926693044771L;
 	
 	public static int GRID_SIZE = 100;
-	public ObjectGrid2D yard =
-			new ObjectGrid2D(GRID_SIZE,GRID_SIZE);
+	public ObjectGrid2D yard = new ObjectGrid2D(GRID_SIZE,GRID_SIZE);
 
 	public Beings(long seed) {
 		super(seed);
@@ -48,7 +51,7 @@ public class Beings extends SimState {
 	public void addAgent(Class clss, Int2D location) throws NoSuchMethodException, SecurityException, InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {
 		Constructor constructor = clss.getConstructor(Int2D.class);
 		Agent agent = (Agent)constructor.newInstance(location);
-		yard.set(agent.x,agent.y,agent);
+		yard.set(location.x,location.y,agent);
 		Stoppable stoppable=schedule.scheduleRepeating(agent);
 		agent.stoppable=stoppable;
 	}

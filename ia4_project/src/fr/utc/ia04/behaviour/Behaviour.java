@@ -1,4 +1,4 @@
-package fr.utc.ia04;
+package fr.utc.ia04.behaviour;
 
 public abstract class Behaviour {
 	protected String id;

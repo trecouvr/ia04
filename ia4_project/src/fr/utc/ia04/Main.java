@@ -1,5 +1,7 @@
 package fr.utc.ia04;
 
+import fr.utc.ia04.simulation.Beings;
+import fr.utc.ia04.simulation.BeingsWithUI;
 import sim.display.Console;
 
 public class Main {

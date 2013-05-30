@@ -1,28 +1,24 @@
 package fr.utc.ia04.metabolism;
 
-import fr.utc.ia04.agent.Agent;
 import fr.utc.ia04.agent.Human;
-import fr.utc.ia04.simulation.Beings;
 
 public class HumanMetabolism extends AbstractMetabolism {
 
-	public HumanMetabolism(Agent a) {
+	public HumanMetabolism(Human a) {
 		super(a);
-		// TODO Auto-generated constructor stub
 	}
 
 	@Override
-	public void preAction(Beings beings) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void postAction(Beings beings) {
-		Human h = (Human)agent;
-		h.setAwake(h.getAwake()-1);
-		h.setEnergy(h.getEnergy()-1);
-		h.setSocial(h.getSocial()-1);
+	public void doAction(double dt) {
+		// Metabolism Part
+		h.setEnergy(	h.getEnergy() -	10*dt);
+		h.setAwake(		h.getAwake() -	3.125*dt);
+		h.setSocial(	h.getSocial() -	2*dt);
+		
+		// Priotity Part
+		h.setPrioCoefEnergy(	2*h.getEnergy()/100 );
+		h.setPrioCoefAwake(		2*h.getAwake()/100 );
+		h.setPrioCoefSocial(	2*h.getSocial()/100 );
 	}
 
 }

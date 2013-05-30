@@ -1,26 +1,21 @@
 package fr.utc.ia04.decision;
 
 import fr.utc.ia04.Module;
-import fr.utc.ia04.agent.Agent;
+import fr.utc.ia04.agent.Human;
+import fr.utc.ia04.perception.StimulusBag;
 import fr.utc.ia04.simulation.Beings;
 
-public class AbstractDecision extends Module {
-
-	public AbstractDecision(Agent a) {
-		super(a);
-		// TODO Auto-generated constructor stub
+public abstract class AbstractDecision extends Module {
+	
+	/*
+	 * Constructor
+	 */
+	public AbstractDecision(Human h) {
+		super(h);
 	}
 
-	@Override
-	public void preAction(Beings beings) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void postAction(Beings beings) {
-		// TODO Auto-generated method stub
-
-	}
-
+	/*
+	 * Method
+	 */
+	public abstract void makeDecision(Beings beings, StimulusBag b);
 }

@@ -9,14 +9,13 @@ import fr.utc.ia04.agent.Human;
 
 import sim.engine.SimState;
 import sim.engine.Stoppable;
-import sim.field.grid.ObjectGrid2D;
-import sim.util.Int2D;
+import sim.field.continuous.Continuous2D;
+import sim.util.Double2D;
 
 public class Beings extends SimState {
 	private static final long serialVersionUID = -7476975926693044771L;
 	
-	public static int GRID_SIZE = 100;
-	public ObjectGrid2D yard = new ObjectGrid2D(GRID_SIZE,GRID_SIZE);
+	public Continuous2D yard = new Continuous2D(SimulationConstants.ENV_DISCRETIZATION,SimulationConstants.ENV_SIZE,SimulationConstants.ENV_SIZE);
 
 	public Beings(long seed) {
 		super(seed);
@@ -43,27 +42,27 @@ public class Beings extends SimState {
 	
 	@SuppressWarnings("rawtypes")
 	public void addAgent(Class clss) throws NoSuchMethodException, SecurityException, InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {
-		Int2D location = randomFreeLocation();
+		Double2D location = randomFreeLocation();
 		addAgent(clss, location);
 	}
 	
 	@SuppressWarnings({ "rawtypes", "unchecked" })
-	public void addAgent(Class clss, Int2D location) throws NoSuchMethodException, SecurityException, InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {
-		Constructor constructor = clss.getConstructor(Int2D.class);
+	public void addAgent(Class clss, Double2D location) throws NoSuchMethodException, SecurityException, InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {
+		Constructor constructor = clss.getConstructor(Double2D.class);
 		Agent agent = (Agent)constructor.newInstance(location);
-		yard.set(location.x,location.y,agent);
+		yard.setObjectLocation(agent,location);
 		Stoppable stoppable=schedule.scheduleRepeating(agent);
 		agent.stoppable=stoppable;
 	}
 	
-	public Int2D randomFreeLocation() {
-		Int2D location;
-		Object ag = null;
-		do {
-			location = new Int2D(random.nextInt(yard.getWidth()),
-				random.nextInt(yard.getHeight()));
-			ag = yard.get(location.x,location.y);
-		} while (ag != null);
+	public Double2D randomFreeLocation() {
+		Double2D location;
+		//Object ag = null;
+		//do {
+			location = new Double2D(	random.nextDouble()*yard.getWidth(),
+										random.nextDouble()*yard.getHeight());
+			//ag = yard.get(location.x,location.y);
+		//} while (ag != null);
 		return location;
 	}
 }

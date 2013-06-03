@@ -9,6 +9,7 @@ import fr.utc.ia04.metabolism.HumanMetabolism;
 import fr.utc.ia04.metabolism.VampireMetabolism;
 import fr.utc.ia04.perception.AbstractPerception;
 import fr.utc.ia04.perception.HumanAwakePerception;
+import fr.utc.ia04.perception.Stimulus;
 import fr.utc.ia04.perception.StimulusBag;
 import fr.utc.ia04.simulation.Beings;
 import fr.utc.ia04.simulation.SimulationConstants;

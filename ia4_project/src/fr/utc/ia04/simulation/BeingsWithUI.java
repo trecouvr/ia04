@@ -2,21 +2,24 @@ package fr.utc.ia04.simulation;
 
 import java.awt.Color;
 import java.awt.Graphics2D;
+import java.awt.Image;
 
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
-
-import fr.utc.ia04.agent.FastFood;
-import fr.utc.ia04.agent.Human;
-import fr.utc.ia04.agent.Hotel;
 
 import sim.display.Controller;
 import sim.display.Display2D;
 import sim.display.GUIState;
 import sim.engine.SimState;
 import sim.portrayal.DrawInfo2D;
+import sim.portrayal.Portrayal;
 import sim.portrayal.continuous.ContinuousPortrayal2D;
+import sim.portrayal.simple.ImagePortrayal2D;
 import sim.portrayal.simple.LabelledPortrayal2D;
 import sim.portrayal.simple.OvalPortrayal2D;
+import fr.utc.ia04.agent.FastFood;
+import fr.utc.ia04.agent.Hotel;
+import fr.utc.ia04.agent.Human;
 
 public class BeingsWithUI extends GUIState {
 	public static int FRAME_SIZE = 500;
@@ -86,23 +89,12 @@ public class BeingsWithUI extends GUIState {
 
 	
 	
-	private LabelledPortrayal2D getFastFoodPortrayal() {
-		OvalPortrayal2D r = new OvalPortrayal2D(1.4);
-		r.paint = Color.GREEN;
-		r.filled = true;
-		
-		LabelledPortrayal2D l = new LabelledPortrayal2D(r, null);
-		return l;
+	private ImagePortrayal2D getFastFoodPortrayal() {
+		return new ImagePortrayal2D(new ImageIcon("fastfood.png"), 10);
 	}
 	
 	
-	private LabelledPortrayal2D getHotelPortrayal(){
-
-		OvalPortrayal2D r = new OvalPortrayal2D(2);
-		r.paint = Color.BLUE;
-		r.filled = true;
-		
-		LabelledPortrayal2D l = new LabelledPortrayal2D(r, null);
-		return l;
+	private ImagePortrayal2D getHotelPortrayal(){
+		return new ImagePortrayal2D(new ImageIcon("hostel.png"), 10);
 	}
 }

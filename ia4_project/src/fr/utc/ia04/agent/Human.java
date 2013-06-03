@@ -48,8 +48,8 @@ public class Human extends Agent {
 	/*
 	 * Constructeur
 	 */
-	public Human(Beings b, Double2D location) {
-		super(b, location);
+	public Human(Double2D location) {
+		super(location);
 		this.metabolism =	new HumanMetabolism(this);
 		this.perception =	new HumanAwakePerception(this);
 		this.decision =		null; // A implémenter

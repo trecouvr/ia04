@@ -29,7 +29,7 @@ public abstract class Agent implements Steppable {
 	 * Méthodes
 	 */
 	
-	public Agent(Beings b, Double2D location) {
+	public Agent(Double2D location) {
 		super();
 		this.position = location;
 		//this.modules = new ArrayList<Module>();

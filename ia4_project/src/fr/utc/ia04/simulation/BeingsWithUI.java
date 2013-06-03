@@ -13,18 +13,19 @@ import sim.display.Display2D;
 import sim.display.GUIState;
 import sim.engine.SimState;
 import sim.portrayal.DrawInfo2D;
-import sim.portrayal.grid.ObjectGridPortrayal2D;
+import sim.portrayal.continuous.ContinuousPortrayal2D;
 import sim.portrayal.simple.OvalPortrayal2D;
 
 public class BeingsWithUI extends GUIState {
 	public static int FRAME_SIZE = 500;
 	public Display2D display;
 	public JFrame displayFrame;
-	ObjectGridPortrayal2D yardPortrayal =
-			new ObjectGridPortrayal2D();
+	ContinuousPortrayal2D yardPortrayal;
 	
 	public BeingsWithUI(SimState state) {
 		super(state);
+		
+		this.yardPortrayal = new ContinuousPortrayal2D();
 	}
 	
 	public void start() {

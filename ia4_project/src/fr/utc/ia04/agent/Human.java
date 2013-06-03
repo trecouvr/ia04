@@ -147,4 +147,10 @@ public class Human extends Agent {
 		this.metabolism = new VampireMetabolism(this);
 		//this.perception = new AbstractPerception(this);
 	}
+	
+	//toString method to display the labelled Portrayal of Human Agent
+	public String toString(){
+		String label = String.format("%d | %d | %d", (int)this.energy, (int)this.awake, (int)this.social);
+		return label;
+	}
 }

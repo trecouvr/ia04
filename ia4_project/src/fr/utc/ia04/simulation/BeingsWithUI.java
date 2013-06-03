@@ -14,6 +14,7 @@ import sim.display.GUIState;
 import sim.engine.SimState;
 import sim.portrayal.DrawInfo2D;
 import sim.portrayal.continuous.ContinuousPortrayal2D;
+import sim.portrayal.simple.LabelledPortrayal2D;
 import sim.portrayal.simple.OvalPortrayal2D;
 
 public class BeingsWithUI extends GUIState {
@@ -56,8 +57,9 @@ public class BeingsWithUI extends GUIState {
 		displayFrame.setVisible(true);
 		display.attach( yardPortrayal, "Yard" );
 	}
-
-	private OvalPortrayal2D getHumanPortrayal() {
+	
+	
+	private LabelledPortrayal2D getHumanPortrayal(){
 		@SuppressWarnings("serial")
 		OvalPortrayal2D r = new OvalPortrayal2D(1.2){
 			@Override
@@ -68,8 +70,13 @@ public class BeingsWithUI extends GUIState {
 			}
 		};
 		r.filled = true;
-		return r;
+		
+		LabelledPortrayal2D l = new LabelledPortrayal2D(r, null);
+		return l;
+		
 	}
+
+	
 	
 	private OvalPortrayal2D getFastFoodPortrayal() {
 		OvalPortrayal2D r = new OvalPortrayal2D(1.4);

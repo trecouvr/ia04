@@ -1,8 +1,10 @@
 package fr.utc.ia04.perception;
 
+import sim.util.Double2D;
 import fr.utc.ia04.Module;
 import fr.utc.ia04.agent.Human;
 import fr.utc.ia04.simulation.Beings;
+import fr.utc.ia04.simulation.SimulationConstants;
 
 public abstract class AbstractPerception extends Module {
 
@@ -14,7 +16,22 @@ public abstract class AbstractPerception extends Module {
 	}
 
 	/*
-	 * Method
+	 * Abstract Method
 	 */
-	public abstract StimulusBag doAction(Beings beings, double dt);
+	public abstract StimulusBag makePerception(Beings beings, double dt);
+	
+	/*
+	 * Method tools
+	 */
+	public Stimulus detectNearestMapBorder(Beings b){
+		double size = SimulationConstants.ENV_SIZE/2;
+		Double2D center = new Double2D(size,size);
+		Double2D vect = center.subtract(h.getPosition());
+		
+		// La direction du 
+		double dir = vect.angle();
+		double l = vect.length();
+		
+		return new Stimulus(l*l/size*size, dir);
+	}
 }

@@ -25,17 +25,11 @@ public class Beings extends SimState {
 		super.start();
 		yard.clear();
 		try {
-			addAgent(Human.class);
-			addAgent(Human.class);
-			addAgent(Human.class);
-			addAgent(Human.class);
-			addAgent(Human.class);
-			addAgent(Human.class);
-			addAgent(FastFood.class);
-			addAgent(FastFood.class);
-			addAgent(FastFood.class);
+			for(int i=0; i<SimulationConstants.NUM_HUMAN; i++)
+				addAgent(Human.class);
+			for(int i=0; i<SimulationConstants.NUM_FASTFOOD; i++)
+				addAgent(FastFood.class);
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}

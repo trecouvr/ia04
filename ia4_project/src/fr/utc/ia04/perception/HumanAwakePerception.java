@@ -11,9 +11,11 @@ public class HumanAwakePerception extends AbstractPerception {
 	}
 
 	@Override
-	public StimulusBag doAction(Beings beings, double dt) {
+	public StimulusBag makePerception(Beings beings, double dt) {
 		
 		StimulusBag b = new StimulusBag();
+		
+		//if(  )
 		
 		Bag bag = beings.yard.getNeighborsWithinDistance(h.getPosition(), h.getPerceptionSkills());
 		for (Object o : bag) {

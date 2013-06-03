@@ -58,6 +58,7 @@ public class BeingsWithUI extends GUIState {
 	}
 
 	private OvalPortrayal2D getHumanPortrayal() {
+		@SuppressWarnings("serial")
 		OvalPortrayal2D r = new OvalPortrayal2D(1.2){
 			@Override
 			public void draw(Object o, Graphics2D g, DrawInfo2D info){

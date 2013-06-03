@@ -1,11 +1,14 @@
 package fr.utc.ia04.agent;
 
+import fr.utc.ia04.behaviour.DoNothingBehaviour;
 import fr.utc.ia04.decision.AbstractDecision;
+import fr.utc.ia04.decision.HumanAwakeDecision;
 import fr.utc.ia04.metabolism.AbstractMetabolism;
 import fr.utc.ia04.metabolism.HumanMetabolism;
 import fr.utc.ia04.metabolism.VampireMetabolism;
 import fr.utc.ia04.perception.AbstractPerception;
 import fr.utc.ia04.perception.HumanAwakePerception;
+import fr.utc.ia04.perception.StimulusBag;
 import fr.utc.ia04.simulation.Beings;
 import fr.utc.ia04.simulation.SimulationConstants;
 
@@ -38,23 +41,30 @@ public class Human extends Agent {
 	 * Charactéristiques de la Perception
 	 */
 	// Bases
-	protected double perceptionSkills;
+	private double perceptionSkills;
 	
 	/*
 	 * Charactéristiques générales
 	 */
-	protected boolean isVampire=false;
+	private double speed; // km/h
+	private boolean isVampire;
 	
 	/*
 	 * Constructeur
 	 */
 	public Human(Double2D location) {
 		super(location);
+		// Modules
 		this.metabolism =	new HumanMetabolism(this);
 		this.perception =	new HumanAwakePerception(this);
-		this.decision =		null; // A implémenter
+		this.decision =		new HumanAwakeDecision(this);
+		this.behaviour =	new DoNothingBehaviour(this);
+		
+		// Characs
+		this.isVampire = false;
+		this.speed = 4.0;
 	}
-	
+
 	/*
 	 * Getters et Setters
 	 */
@@ -78,19 +88,58 @@ public class Human extends Agent {
 	public void setPrioCoefSocial(double prioCoefSocial) {this.prioCoefSocial = prioCoefSocial;}
 	public boolean isVampire() {return isVampire;}
 	public double getPerceptionSkills() {return perceptionSkills;}
+	public double getSpeed() {return speed;}
+	public void setSpeed(double speed) {this.speed = speed;}
 
-	
+	/*
+	 * Step Method
+	 * 
+	 * (non-Javadoc)
+	 * @see fr.utc.ia04.agent.Agent#step(sim.engine.SimState)
+	 */
 	@Override
 	public void step(SimState arg0) {
 		super.step(arg0);
+		Beings b = (Beings) arg0;
+		
+		double dt = SimulationConstants.ENV_DT;
 		
 		// Death Conditions
-		if(awake<=0 || energy<=0 || social<=0)
-			die((Beings)arg0);
+		//if(awake<=0 || energy<=0 || social<=0)
+			//die((Beings)arg0);
 		
 		// Metabolism
-		metabolism.doAction(SimulationConstants.ENV_DT);
+		metabolism.doAction(dt);
 		
+		// Perception
+		StimulusBag bs = this.perception.makePerception(b, dt);
+		
+		// Decision
+		this.decision.makeDecision(b, bs);
+		
+		// Action
+		this.behaviour.doAction(b, dt);
+		
+	}
+	
+	/*
+	 * Basic Action
+	 */
+	
+	/**
+	 * Fait se déplacer l'humain dans une certaine direction 
+	 * 
+	 * @param b
+	 * 		L'état courant de la simulation
+	 * @param dt
+	 * 		
+	 * @param direction
+	 * 		La direction en radian.
+	 */
+	public void move(Beings b, double dt, double direction){
+		Double2D newLocation = new Double2D(	this.getPosition().x + dt*this.getSpeed()*Math.cos(direction),
+												this.getPosition().y + dt*this.getSpeed()*Math.sin(direction));
+		this.setPosition(b, newLocation);
 	}
 	
 	public void makeVampire() {

@@ -23,7 +23,7 @@ public abstract class Agent implements Steppable {
 	public Behaviour getBehaviour() {return behaviour;}
 	public void setBehaviour(Behaviour behaviour) {this.behaviour = behaviour;}
 	public Double2D getPosition() {return position;}
-	public void setPosition(Double2D location) {this.position = location;}
+	public void setPosition(Beings b, Double2D location) {b.yard.setObjectLocation(this, location); this.position = location;}
 	
 	/*
 	 * Méthodes
@@ -32,14 +32,12 @@ public abstract class Agent implements Steppable {
 	public Agent(Double2D location) {
 		super();
 		this.position = location;
-		//this.modules = new ArrayList<Module>();
-		System.out.println("constructor");
+
+		System.out.println(this.getClass().getName() + " created");
 	}
 
 	public void step(SimState arg0) {
-		//for (Module m : modules) m.preAction((Beings)arg0);
-		//behaviour.doAction(); // faire l'action de ce tour
-		//for (Module m : modules) m.postAction((Beings)arg0);
+		// Do Nothing
 	}
 
 	public String toString(){
@@ -49,7 +47,6 @@ public abstract class Agent implements Steppable {
 	/*
 	 * Actions
 	 */
-	
 	protected void die(Beings beings) {
 		beings.yard.removeObjectsAtLocation(this.position);
 		stoppable.stop();

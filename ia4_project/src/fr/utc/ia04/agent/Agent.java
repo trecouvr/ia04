@@ -1,6 +1,5 @@
 package fr.utc.ia04.agent;
 
-import fr.utc.ia04.behaviour.Behaviour;
 import fr.utc.ia04.simulation.Beings;
 import sim.engine.SimState;
 import sim.engine.Steppable;
@@ -15,13 +14,10 @@ public abstract class Agent implements Steppable {
 	 */
 	public Stoppable stoppable;
 	protected Double2D position;
-	protected Behaviour behaviour;
 	
 	/*
 	 * Getters et Setters
 	 */
-	public Behaviour getBehaviour() {return behaviour;}
-	public void setBehaviour(Behaviour behaviour) {this.behaviour = behaviour;}
 	public Double2D getPosition() {return position;}
 	public void setPosition(Beings b, Double2D location) {b.yard.setObjectLocation(this, location); this.position = location;}
 	

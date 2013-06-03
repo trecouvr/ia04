@@ -26,12 +26,12 @@ public abstract class AbstractPerception extends Module {
 	public Stimulus detectNearestMapBorder(Beings b){
 		double size = SimulationConstants.ENV_SIZE/2;
 		Double2D center = new Double2D(size,size);
-		Double2D vect = center.subtract(h.getPosition());
+		Double2D vect = h.getPosition().subtract(center);
 		
 		// La direction du 
 		double dir = vect.angle();
 		double l = vect.length();
 		
-		return new Stimulus(l*l/size*size, dir);
+		return new Stimulus((l/size)*(l/size), dir);
 	}
 }

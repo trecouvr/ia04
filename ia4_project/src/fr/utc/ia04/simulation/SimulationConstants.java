@@ -18,6 +18,9 @@ public class SimulationConstants {
 	public final static int		NUM_FASTFOOD =				5;
 	public final static int 	NUM_HOTEL =					3;
 	
+	// Main Perception Category
+	public final static String	PERC_MAPBORDER =			"mapBorder";
+	
 	// Main Agent States
 	public final static String	STATE_DONOTHING =			"doNothing";
 	public final static String	STATE_WALKING =				"walk";

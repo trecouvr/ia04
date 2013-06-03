@@ -3,6 +3,7 @@ package fr.utc.ia04.perception;
 import sim.util.Bag;
 import fr.utc.ia04.agent.Human;
 import fr.utc.ia04.simulation.Beings;
+import fr.utc.ia04.simulation.SimulationConstants;
 
 public class HumanAwakePerception extends AbstractPerception {
 
@@ -15,7 +16,9 @@ public class HumanAwakePerception extends AbstractPerception {
 		
 		StimulusBag b = new StimulusBag();
 		
-		//if(  )
+		Stimulus s = this.detectNearestMapBorder(beings);
+		if( s.getIntensity() > 0.8 )
+			b.offer(SimulationConstants.PERC_MAPBORDER, s);
 		
 		Bag bag = beings.yard.getNeighborsWithinDistance(h.getPosition(), h.getPerceptionSkills());
 		for (Object o : bag) {

@@ -1,5 +1,6 @@
 package fr.utc.ia04.agent;
 
+import fr.utc.ia04.behaviour.Behaviour;
 import fr.utc.ia04.behaviour.DoNothingBehaviour;
 import fr.utc.ia04.decision.AbstractDecision;
 import fr.utc.ia04.decision.HumanAwakeDecision;
@@ -24,6 +25,7 @@ public class Human extends Agent {
 	protected AbstractMetabolism	metabolism;
 	protected AbstractPerception	perception;
 	protected AbstractDecision		decision;
+	protected Behaviour				behaviour;
 
 	/*
 	 * Charactéristiques du Métabolisme
@@ -74,6 +76,8 @@ public class Human extends Agent {
 	public void setPerception(AbstractPerception perception) {this.perception = perception;}
 	public AbstractDecision getDecision() {return decision;}
 	public void setDecision(AbstractDecision decision) {this.decision = decision;}
+	public Behaviour getBehaviour() {return behaviour;}
+	public void setBehaviour(Behaviour behaviour) {this.behaviour = behaviour;}
 	public double getEnergy() {return energy;}
 	public void setEnergy(double energy) {this.energy = energy;}
 	public double getAwake() {return awake;}

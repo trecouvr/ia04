@@ -6,6 +6,7 @@ import java.lang.reflect.InvocationTargetException;
 import fr.utc.ia04.agent.Agent;
 import fr.utc.ia04.agent.FastFood;
 import fr.utc.ia04.agent.Human;
+import fr.utc.ia04.agent.Hotel;
 
 import sim.engine.SimState;
 import sim.engine.Stoppable;
@@ -29,6 +30,8 @@ public class Beings extends SimState {
 				addAgent(Human.class);
 			for(int i=0; i<SimulationConstants.NUM_FASTFOOD; i++)
 				addAgent(FastFood.class);
+			for(int i=0; i<SimulationConstants.NUM_HOTEL; i++)
+				addAgent(Hotel.class);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

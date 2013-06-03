@@ -3,10 +3,10 @@ package fr.utc.ia04.agent;
 import sim.engine.SimState;
 import sim.util.Double2D;
 
-public class FastFood extends Agent {
+public class Hotel extends Agent {
 	private static final long serialVersionUID = -3416294164695473946L;
 
-	public FastFood(Double2D position) {
+	public Hotel(Double2D position) {
 		super(position);
 		// TODO Auto-generated constructor stub
 	}
@@ -17,9 +17,7 @@ public class FastFood extends Agent {
 	}
 
 	public String toString(){
-		
-		
-		return "Fast Food";
-		
+		return "Hotel";
 	}
+
 }

@@ -7,6 +7,7 @@ import javax.swing.JFrame;
 
 import fr.utc.ia04.agent.FastFood;
 import fr.utc.ia04.agent.Human;
+import fr.utc.ia04.agent.Hotel;
 
 import sim.display.Controller;
 import sim.display.Display2D;
@@ -42,6 +43,7 @@ public class BeingsWithUI extends GUIState {
 		yardPortrayal.setField(beings.yard );
 		yardPortrayal.setPortrayalForClass(Human.class, getHumanPortrayal());
 		yardPortrayal.setPortrayalForClass(FastFood.class, getFastFoodPortrayal());
+		yardPortrayal.setPortrayalForClass(Hotel.class, getHotelPortrayal());
 		display.reset();
 		display.setBackdrop(Color.white);
 		display.repaint();
@@ -65,11 +67,17 @@ public class BeingsWithUI extends GUIState {
 			@Override
 			public void draw(Object o, Graphics2D g, DrawInfo2D info){
 				Human h = (Human)o;
-				this.paint=Color.RED;
+				if (h.isVampire()){
+					this.paint = Color.YELLOW;
+				}else {
+					this.paint=Color.RED;
+				}
+				
 				super.draw(o,g,info);
 			}
 		};
 		r.filled = true;
+		
 		
 		LabelledPortrayal2D l = new LabelledPortrayal2D(r, null);
 		return l;
@@ -78,10 +86,23 @@ public class BeingsWithUI extends GUIState {
 
 	
 	
-	private OvalPortrayal2D getFastFoodPortrayal() {
+	private LabelledPortrayal2D getFastFoodPortrayal() {
 		OvalPortrayal2D r = new OvalPortrayal2D(1.4);
 		r.paint = Color.GREEN;
 		r.filled = true;
-		return r;
+		
+		LabelledPortrayal2D l = new LabelledPortrayal2D(r, null);
+		return l;
+	}
+	
+	
+	private LabelledPortrayal2D getHotelPortrayal(){
+
+		OvalPortrayal2D r = new OvalPortrayal2D(2);
+		r.paint = Color.BLUE;
+		r.filled = true;
+		
+		LabelledPortrayal2D l = new LabelledPortrayal2D(r, null);
+		return l;
 	}
 }

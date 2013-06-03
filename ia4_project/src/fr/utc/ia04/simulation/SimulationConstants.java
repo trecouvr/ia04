@@ -16,6 +16,7 @@ public class SimulationConstants {
 	// Proportion Agent
 	public final static int		NUM_HUMAN =					20;
 	public final static int		NUM_FASTFOOD =				5;
+	public final static int 	NUM_HOTEL =					3;
 	
 	// Main Agent States
 	public final static String	STATE_DONOTHING =			"doNothing";

@@ -22,7 +22,7 @@ public class DoNothingBehaviour extends CyclicBehaviour {
 
 	@Override
 	public double evalGain() {
-		return 0;
+		return SimulationConstants.GAIN_NULL;
 	}
 
 }

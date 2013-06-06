@@ -18,6 +18,17 @@ public class SimulationConstants {
 	public final static int		NUM_FASTFOOD =				5;
 	public final static int 	NUM_HOTEL =					3;
 	
+	// Interactions Dist
+	public final static double	DIST_NEAR =					1;
+	public final static double	DIST_INTERACT =				2;
+	
+	// Gain
+	public final static double	GAIN_NULL =					0.0;
+	public final static double	GAIN_LOW =					0.2;
+	public final static double	GAIN_MEDIUM =				0.5;
+	public final static double	GAIN_HIGHT =				0.8;
+	public final static double	GAIN_MAX =					1.0;
+	
 	// Main Perception Category
 	public final static String	PERC_MAPBORDER =			"mapBorder";
 	

@@ -32,6 +32,6 @@ public abstract class AbstractPerception extends Module {
 		double dir = vect.angle();
 		double l = vect.length();
 		
-		return new Stimulus((l/size)*(l/size), dir);
+		return new Stimulus(-(l/size)*(l/size), dir);
 	}
 }

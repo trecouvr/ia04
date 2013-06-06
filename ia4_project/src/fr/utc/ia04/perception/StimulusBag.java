@@ -1,6 +1,7 @@
 package fr.utc.ia04.perception;
 
 import java.util.HashMap;
+import java.util.Map.Entry;
 import java.util.PriorityQueue;
 
 public class StimulusBag {
@@ -21,6 +22,19 @@ public class StimulusBag {
 	/*
 	 * Methods
 	 */
+	public String getCategoryOfHightStimulus(){
+		String cat = null;
+		double stimulMax = 0;
+		
+		for(Entry<String,PriorityQueue<Stimulus>> it : this.map.entrySet())
+			if( it.getValue().peek().getIntensity() > stimulMax ){
+				stimulMax = it.getValue().peek().getIntensity();
+				cat = it.getKey();
+			}
+		
+		return cat;
+	}
+	
 	public void offer(String category, Stimulus s){
 		
 		PriorityQueue<Stimulus> queue = map.get(category);

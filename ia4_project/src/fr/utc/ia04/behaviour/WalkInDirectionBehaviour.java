@@ -26,8 +26,7 @@ public class WalkInDirectionBehaviour extends CyclicBehaviour {
 
 	@Override
 	public double evalGain() {
-		// TODO Auto-generated method stub
-		return 0;
+		return SimulationConstants.GAIN_LOW;
 	}
 
 }

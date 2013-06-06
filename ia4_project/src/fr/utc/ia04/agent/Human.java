@@ -129,21 +129,57 @@ public class Human extends Agent {
 	/*
 	 * Basic Action
 	 */
-	
+
 	/**
-	 * Fait se déplacer l'humain dans une certaine direction 
+	 * Fait se faire déplacer l'humain vers un certain point ou
+	 * sur un certain point s'il est suffisament proche.
 	 * 
 	 * @param b
 	 * 		L'état courant de la simulation
 	 * @param dt
-	 * 		
+	 * 		Le temps pendant lequel exécuter l'action en heure.
+	 * @param pos
+	 * 		La position dont on veut que l'agent s'apporche
+	 * à une distance de DIST_NEAR.
+	 * 
+	 * @return
+	 * 		La distance réellement parcourue.
+	 */
+	public double move(Beings b, double dt, Double2D pos){
+		Double2D move = pos.subtract(position);
+		double l = move.length();
+		double lMax = dt*this.getSpeed();
+		
+		if(l > lMax)
+			move = move.multiply(lMax/l);
+		else
+			move = move.multiply((l-SimulationConstants.DIST_NEAR)/l);
+		
+		Double2D newLocation = this.getPosition().add(move);
+		this.setPosition(b, newLocation);
+		
+		return move.length();
+	}
+	
+	/**
+	 * Fait se faire déplacer l'humain dans une certaine direction 
+	 * 
+	 * @param b
+	 * 		L'état courant de la simulation.
+	 * @param dt
+	 * 		Le temps pendant lequel exécuter l'action en heure.
 	 * @param direction
 	 * 		La direction en radian.
+	 * 
+	 * @return
+	 * 		La distance réellement parcourue.
 	 */
-	public void move(Beings b, double dt, double direction){
-		Double2D newLocation = new Double2D(	this.getPosition().x + dt*this.getSpeed()*Math.cos(direction),
-												this.getPosition().y + dt*this.getSpeed()*Math.sin(direction));
-		this.setPosition(b, newLocation);
+	public double move(Beings b, double dt, double direction){
+		Double2D move = new Double2D(	dt*this.getSpeed()*Math.cos(direction),
+										dt*this.getSpeed()*Math.sin(direction));
+		this.setPosition(b, this.getPosition().add(move));
+		
+		return move.length();
 	}
 	
 	public void makeVampire() {

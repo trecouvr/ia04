@@ -40,7 +40,7 @@ public class HumanAwakePerception extends AbstractPerception {
 	public Stimulus stimulusFromAgentLocation(Agent o) {
 		Double2D p = o.getPosition();
 		// todo normalize
-		double d = h.getPosition().distance(p);
+		double d = h.distance(o);
 		return new Stimulus(d, o);
 	}
 

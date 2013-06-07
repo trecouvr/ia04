@@ -194,4 +194,10 @@ public class Human extends Agent {
 		String label = String.format("%d | %d | %d", (int)this.energy, (int)this.awake, (int)this.social);
 		return label;
 	}
+	
+	public double distance(Agent o) {
+		Double2D p = o.getPosition();
+		// todo normalize
+		return position.distance(p);
+	}
 }

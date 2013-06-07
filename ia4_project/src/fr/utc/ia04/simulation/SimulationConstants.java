@@ -37,5 +37,11 @@ public class SimulationConstants {
 	// Main Agent States
 	public final static String	STATE_DONOTHING =			"doNothing";
 	public final static String	STATE_WALKING =				"walk";
+	public final static String	STATE_SPEAKING =			"speak";
+	public static final String  STATE_EATING =				"eat";
+	public static final String  STATE_SLEEPING =			"sleep";
+	public static final String  STATE_EATINGHUM =			"eat_hum";
+	public static final String  STATE_ATTAKING =			"attak";
+	public static final String  STATE_RUNNINGAWAY =			"run_away";
 
 }

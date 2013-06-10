@@ -80,6 +80,8 @@ public class Human extends Agent {
 		this.isVampire = false;
 		this.perceptionSkills = 2.0;
 		this.speed = 4.0;
+		
+		this.knownVampire = new ArrayList<Human>();
 	}
 
 	/*

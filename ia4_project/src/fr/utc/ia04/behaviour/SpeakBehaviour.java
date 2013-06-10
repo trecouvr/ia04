@@ -44,8 +44,7 @@ public class SpeakBehaviour extends ProximityBehaviour {
 
 	@Override
 	public double evalGain() {
-		// TODO Auto-generated method stub
-		return 0;
+		return SimulationConstants.GAIN_HIGHT;
 	}
 	
 	@Override

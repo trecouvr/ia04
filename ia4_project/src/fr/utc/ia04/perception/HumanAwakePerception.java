@@ -36,15 +36,15 @@ public class HumanAwakePerception extends AbstractPerception {
 						b.offer(SimulationConstants.PERC_VAMPIRE, new Stimulus(this.distanceIntensity((Human)o) * -1 , o));
 					}
 					else{
-						b.offer(SimulationConstants.PERC_HUMAN, new Stimulus( 0.7*this.distanceIntensity((Human)o) + 0.3*h.getPrioCoefSocial(), o) );
+						b.offer(SimulationConstants.PERC_HUMAN, new Stimulus( 0.3*this.distanceIntensity((Human)o) + 0.7*h.getPrioCoefSocial(), o) );
 					}
 
 				}
 				else if (o instanceof FastFood) {
-					b.offer(SimulationConstants.PERC_FASTFOOD, new Stimulus( 0.7*this.distanceIntensity((FastFood)o) + 0.3*h.getPrioCoefEnergy(), o) );
+					b.offer(SimulationConstants.PERC_FASTFOOD, new Stimulus( 0.3*this.distanceIntensity((FastFood)o) + 0.7*h.getPrioCoefEnergy(), o) );
 				}
 				else if (o instanceof Hotel) {
-					b.offer(SimulationConstants.PERC_HOTEL, new Stimulus( 0.7*this.distanceIntensity((Hotel)o) + 0.3*h.getPrioCoefAwake(), o) );
+					b.offer(SimulationConstants.PERC_HOTEL, new Stimulus( 0.3*this.distanceIntensity((Hotel)o) + 0.7*h.getPrioCoefAwake(), o) );
 				}
 			
 			}

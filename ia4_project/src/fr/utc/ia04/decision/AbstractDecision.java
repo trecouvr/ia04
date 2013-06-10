@@ -24,7 +24,7 @@ public abstract class AbstractDecision extends Module {
 	 * Tool Method
 	 */
 	protected boolean changeBehaviour(Behaviour b){
-		System.out.println(this.hashCode() + " do " + b.getClass().getName());
+		//System.out.println(this.hashCode() + " do " + b.getClass().getName());
 		h.setBehaviour(b);
 		return true;
 	}

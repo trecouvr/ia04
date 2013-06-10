@@ -54,8 +54,8 @@ public class Beings extends SimState {
 		Double2D location;
 		//Object ag = null;
 		//do {
-			location = new Double2D(	(0.25*yard.getWidth())+random.nextDouble()*yard.getWidth()/2.0,
-										(0.25*yard.getHeight())+random.nextDouble()*yard.getHeight()/2.0);
+			location = new Double2D(	(0.15*yard.getWidth())+random.nextDouble()*yard.getWidth()/1.5,
+										(0.15*yard.getHeight())+random.nextDouble()*yard.getHeight()/1.5);
 			//ag = yard.get(location.x,location.y);
 		//} while (ag != null);
 		return location;

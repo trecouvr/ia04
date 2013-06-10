@@ -8,6 +8,7 @@ import fr.utc.ia04.behaviour.CompositeBehaviour;
 import fr.utc.ia04.behaviour.DoNothingBehaviour;
 import fr.utc.ia04.behaviour.EatBehaviour;
 import fr.utc.ia04.behaviour.SleepBehaviour;
+import fr.utc.ia04.behaviour.SpeakBehaviour;
 import fr.utc.ia04.behaviour.WalkInDirectionBehaviour;
 import fr.utc.ia04.behaviour.WalkNearAgentBehaviour;
 import fr.utc.ia04.perception.Stimulus;
@@ -44,7 +45,10 @@ public class HumanAwakeDecision extends AbstractDecision {
 				this.changeBehaviour(new WalkInDirectionBehaviour(this.h, ((Double)s.getSource()) + Math.PI ));
 			}
 			else if( hightCat.equals( SimulationConstants.PERC_HUMAN)){		// Social need
-				this.changeBehaviour(new WalkNearAgentBehaviour(h, (Agent)s.getSource(), SimulationConstants.DIST_NEAR));
+				this.changeBehaviour(new CompositeBehaviour(h,
+						new WalkNearAgentBehaviour(h, (Human)s.getSource(), SimulationConstants.DIST_NEAR),
+						new SpeakBehaviour(h, (Human)s.getSource()))
+				);
 			}
 			else if( hightCat.equals( SimulationConstants.PERC_FASTFOOD)){	// Energy need
 				this.changeBehaviour(new CompositeBehaviour(h,

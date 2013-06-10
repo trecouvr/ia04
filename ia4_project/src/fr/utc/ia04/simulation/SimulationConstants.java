@@ -18,9 +18,9 @@ public class SimulationConstants {
 	public final static double	DISP_SCALE_AGT =			0.15;
 	
 	// Proportion Agent
-	public final static int		NUM_HUMAN =					1;
-	public final static int		NUM_FASTFOOD =				1;
-	public final static int 	NUM_HOTEL =					1;
+	public final static int		NUM_HUMAN =					20;
+	public final static int		NUM_FASTFOOD =				3;
+	public final static int 	NUM_HOTEL =					3;
 	
 	// Param Agent
 	public final static double	CHAR_MAX_ENERGY =			1.0;

@@ -41,6 +41,8 @@ public class SimulationConstants {
 	// Main Perception Category
 	public final static String	PERC_MAPBORDER =			"mapBorder";
 	public static final String  PERC_AGENT = 				"agent";
+	public static final String PERC_VAMPIRE =				"vampire";
+	public static final String PERC_HUMAN =					"human";
 	public static final String  PERC_FASTFOOD = 			"fastfood";
 	public static final String  PERC_HOTEL = 				"hotel";
 	

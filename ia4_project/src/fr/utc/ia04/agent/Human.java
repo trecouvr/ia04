@@ -1,5 +1,7 @@
 package fr.utc.ia04.agent;
 
+import java.util.ArrayList;
+
 import fr.utc.ia04.behaviour.Behaviour;
 import fr.utc.ia04.behaviour.DoNothingBehaviour;
 import fr.utc.ia04.decision.AbstractDecision;
@@ -54,6 +56,11 @@ public class Human extends Agent {
 	private boolean isVampire;
 	
 	/*
+	 * Liste des vampires connus
+	 */
+	private ArrayList<Human> knownVampire;
+	
+	/*
 	 * Constructeur
 	 */
 	public Human(Double2D location) {
@@ -104,7 +111,9 @@ public class Human extends Agent {
 	public void setSpeed(double speed) {this.speed = speed;}
 	public double getGlobalHealth() {return globalHealth;}
 	public void setGlobalHealth(double globalHealth) {this.globalHealth = globalHealth;}
+	public ArrayList<Human> getKnownVampire(){return this.knownVampire;};
 
+	
 	/*
 	 * Step Method
 	 * 
@@ -216,4 +225,44 @@ public class Human extends Agent {
 		// todo normalize
 		return position.distance(p);
 	}
+	
+	public void addKnownVampire (Human vampireToAdd) {
+		
+		if (this.knowThisVampire(vampireToAdd)){
+			return;
+		}
+		else {
+			if (vampireToAdd.isVampire){
+				this.knownVampire.add(vampireToAdd);
+			}
+		}
+			
+		
+	}
+	
+	public Human pickARandomKnownVampire(){
+		int nb = this.knownVampire.size();
+		int randomIndex = (int)(Math.random() * (nb-1));
+		
+		return this.knownVampire.get(randomIndex);
+	}
+	
+	
+	
+	public boolean knowSomeone(){
+		if (this.knownVampire != null && this.knownVampire.size()>=1){
+			return true;
+		}
+		return false;
+	}
+	
+	public boolean knowThisVampire (Human vampire){
+		if (this.knownVampire.contains(vampire)){
+			return true;
+		}
+		else{
+			return false;
+		}
+	}
+
 }

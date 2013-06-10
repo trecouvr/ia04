@@ -18,6 +18,12 @@ public abstract class Behaviour {
 	/*
 	 * Constructor
 	 */
+	public Behaviour(Human h) {
+		super();
+		this.h = h;
+		this.id = null;
+	}
+	
 	public Behaviour(Human h, String id) {
 		super();
 		this.h = h;

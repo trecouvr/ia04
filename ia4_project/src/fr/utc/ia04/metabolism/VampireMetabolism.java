@@ -11,10 +11,10 @@ public class VampireMetabolism extends AbstractMetabolism {
 	@Override
 	public void doAction(double dt) {
 		// Metabolism Part
-		h.setEnergy(	h.getEnergy() -	0.7*dt);
+		h.setEnergy(h.getEnergy() -	0.7*dt);
 		
 		// Priotity Part
-		h.setPrioCoefEnergy(	2*h.getEnergy()/100 );
+		h.setPrioCoefEnergy(2*h.getEnergy()/100 );
 		
 		setGlobalHealth();
 	}

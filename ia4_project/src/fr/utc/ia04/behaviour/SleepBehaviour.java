@@ -8,18 +8,19 @@ import fr.utc.ia04.simulation.SimulationConstants;
 public class SleepBehaviour extends ProximityBehaviour {
 
 	public SleepBehaviour(Human h, Hotel o) {
-		super(h, SimulationConstants.STATE_SLEEPING, o, 1.0); // TODO fixer la distance minimale
+		super(h, SimulationConstants.STATE_SLEEPING, o, SimulationConstants.DIST_INTERACT);
 	}
 
 	@Override
 	public void doAction(Beings b, double dt) {
-		h.setAwake(h.getAwake()+dt); // TODO régler le coeff
+		double sleptValue = SimulationConstants.CHAR_REG_SLEEP*dt;
+		h.setAwake(h.getAwake()+sleptValue);
+		System.out.println("i sleep");
 	}
 
 	@Override
 	public double evalGain() {
-		// TODO Auto-generated method stub
-		return 0;
+		return SimulationConstants.GAIN_HIGHT;
 	}
 	
 	@Override

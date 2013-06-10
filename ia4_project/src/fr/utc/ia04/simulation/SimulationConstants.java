@@ -16,9 +16,9 @@ public class SimulationConstants {
 	// Display
 	public final static double	DISP_SCALE_IMG =				1;
 	public final static double	DISP_SCALE_AGT =				0.6;
-	
+
 	// Proportion Agent
-	public final static int		NUM_HUMAN =					3;
+	public final static int		NUM_HUMAN =					1;
 	public final static int		NUM_FASTFOOD =				1;
 	public final static int 	NUM_HOTEL =					1;
 	
@@ -26,10 +26,12 @@ public class SimulationConstants {
 	public final static double	CHAR_MAX_ENERGY =			1.0;
 	public final static double	CHAR_MAX_AWAKE =			1.0;
 	public final static double	CHAR_MAX_SOCIAL =			1.0;
-	
-	public final static double	METABOLISM_COEF_ENERGY =	1.0;
-	public final static double	METABOLISM_COEF_AWAKE =		.312;
-	public final static double	METABOLISM_COEF_SOCIAL =	.2;
+	public final static double	CHAR_REG_EAT =				0.5;
+	public final static double	CHAR_REG_SLEEP =			0.1;
+	public final static double	CHAR_REG_SOCIAL =			0.02;
+	public final static double	METABOLISM_COEF_ENERGY =	1.0/48;
+	public final static double	METABOLISM_COEF_AWAKE =		1.0/72;
+	public final static double	METABOLISM_COEF_SOCIAL =	1.0/200;
 	
 	// Interactions Dist
 	public final static double	DIST_NEAR =					0.1;
@@ -44,7 +46,8 @@ public class SimulationConstants {
 	
 	// Main Perception Category
 	public final static String	PERC_MAPBORDER =			"mapBorder";
-	public static final String  PERC_AGENT = 				"agent";
+	public static final String	PERC_VAMPIRE =				"vampire";
+	public static final String	PERC_HUMAN =				"human";
 	public static final String  PERC_FASTFOOD = 			"fastfood";
 	public static final String  PERC_HOTEL = 				"hotel";
 	

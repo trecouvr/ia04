@@ -13,13 +13,13 @@ public class EatBehaviour extends ProximityBehaviour {
 
 	@Override
 	public void doAction(Beings b, double dt) {
-		h.setEnergy(h.getEnergy()+dt); // TODO régler le coeff
+		double ateValue = SimulationConstants.CHAR_REG_EAT*dt;
+		h.setEnergy(h.getEnergy()+ateValue);
 	}
 
 	@Override
 	public double evalGain() {
-		// TODO Auto-generated method stub
-		return 0;
+		return SimulationConstants.GAIN_HIGHT;
 	}
 	
 	@Override

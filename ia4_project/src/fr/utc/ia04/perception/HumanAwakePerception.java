@@ -30,13 +30,21 @@ public class HumanAwakePerception extends AbstractPerception {
 			if(!o.equals(h)){
 			
 				if (o instanceof Human) {
-					b.offer(SimulationConstants.PERC_AGENT, new Stimulus( ( this.distanceIntensity((Human)o) + h.getPrioCoefSocial() ) / 2.0, o) );
+				//TO DO : difference human/vampire
+				
+					if (h.knowThisVampire((Human)o)){
+						b.offer(SimulationConstants.PERC_VAMPIRE, new Stimulus(this.distanceIntensity((Human)o) * -1 , o));
+					}
+					else{
+						b.offer(SimulationConstants.PERC_HUMAN, new Stimulus( 0.7*this.distanceIntensity((Human)o) + 0.3*h.getPrioCoefSocial(), o) );
+					}
+
 				}
 				else if (o instanceof FastFood) {
-					b.offer(SimulationConstants.PERC_FASTFOOD, new Stimulus( ( this.distanceIntensity((FastFood)o) + h.getPrioCoefEnergy() ) / 2.0, o) );
+					b.offer(SimulationConstants.PERC_FASTFOOD, new Stimulus( 0.7*this.distanceIntensity((FastFood)o) + 0.3*h.getPrioCoefEnergy(), o) );
 				}
 				else if (o instanceof Hotel) {
-					b.offer(SimulationConstants.PERC_HOTEL, new Stimulus( ( this.distanceIntensity((Hotel)o) + h.getPrioCoefAwake() ) / 2.0, o) );
+					b.offer(SimulationConstants.PERC_HOTEL, new Stimulus( 0.7*this.distanceIntensity((Hotel)o) + 0.3*h.getPrioCoefAwake(), o) );
 				}
 			
 			}

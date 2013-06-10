@@ -31,13 +31,15 @@ public class Human extends Agent {
 	 * Charactéristiques du Métabolisme
 	 */
 	// Bases
-	protected double energy;
-	protected double awake;
-	protected double social;
+	protected double energy=100;
+	protected double awake=100;
+	protected double social=100;
 	// Dérivées
 	protected double prioCoefEnergy;
 	protected double prioCoefAwake;
 	protected double prioCoefSocial;
+	
+	protected double globalHealth;
 	
 	/*
 	 * Charactéristiques de la Perception
@@ -100,6 +102,8 @@ public class Human extends Agent {
 	public double getPerceptionSkills() {return perceptionSkills;}
 	public double getSpeed() {return speed;}
 	public void setSpeed(double speed) {this.speed = speed;}
+	public double getGlobalHealth() {return globalHealth;}
+	public void setGlobalHealth(double globalHealth) {this.globalHealth = globalHealth;}
 
 	/*
 	 * Step Method
@@ -203,7 +207,7 @@ public class Human extends Agent {
 	
 	//toString method to display the labelled Portrayal of Human Agent
 	public String toString(){
-		String label = String.format("%d | %d | %d", (int)this.energy, (int)this.awake, (int)this.social);
+		String label = String.format("%d", (int)this.globalHealth);
 		return label;
 	}
 	

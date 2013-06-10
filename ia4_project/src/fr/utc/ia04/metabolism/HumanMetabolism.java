@@ -19,6 +19,8 @@ public class HumanMetabolism extends AbstractMetabolism {
 		h.setPrioCoefEnergy(	2*h.getEnergy()/100 );
 		h.setPrioCoefAwake(		2*h.getAwake()/100 );
 		h.setPrioCoefSocial(	2*h.getSocial()/100 );
+		
+		setGlobalHealth();
 	}
 
 }

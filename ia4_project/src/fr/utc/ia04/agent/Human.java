@@ -207,7 +207,7 @@ public class Human extends Agent {
 	
 	//toString method to display the labelled Portrayal of Human Agent
 	public String toString(){
-		String label = String.format("%d", (int)this.globalHealth);
+		String label = String.format("%d", (int)this.awake);
 		return label;
 	}
 	

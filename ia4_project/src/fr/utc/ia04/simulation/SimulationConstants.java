@@ -14,11 +14,11 @@ public class SimulationConstants {
 	public final static double	ENV_DT =					0.0167;
 	
 	// Display
-	public final static double	DISP_SCALE_IMG =				1;
-	public final static double	DISP_SCALE_AGT =				0.2;
+	public final static double	DISP_SCALE_IMG =			0.15;
+	public final static double	DISP_SCALE_AGT =			0.15;
 	
 	// Proportion Agent
-	public final static int		NUM_HUMAN =					3;
+	public final static int		NUM_HUMAN =					1;
 	public final static int		NUM_FASTFOOD =				1;
 	public final static int 	NUM_HOTEL =					1;
 	
@@ -26,6 +26,9 @@ public class SimulationConstants {
 	public final static double	CHAR_MAX_ENERGY =			100.0;
 	public final static double	CHAR_MAX_AWAKE =			100.0;
 	public final static double	CHAR_MAX_SOCIAL =			100.0;
+	public final static double	CHAR_REG_EAT =				50.0;
+	public final static double	CHAR_REG_SLEEP =			5.0;
+	public final static double	CHAR_REG_SOCIAL =			2.0;
 	
 	// Interactions Dist
 	public final static double	DIST_NEAR =					0.1;

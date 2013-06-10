@@ -1,7 +1,11 @@
 package fr.utc.ia04.decision;
 
 import fr.utc.ia04.agent.Agent;
+import fr.utc.ia04.agent.Hotel;
 import fr.utc.ia04.agent.Human;
+import fr.utc.ia04.behaviour.CompositeBehaviour;
+import fr.utc.ia04.behaviour.DoNothingBehaviour;
+import fr.utc.ia04.behaviour.SleepBehaviour;
 import fr.utc.ia04.behaviour.WalkInDirectionBehaviour;
 import fr.utc.ia04.behaviour.WalkNearAgentBehaviour;
 import fr.utc.ia04.perception.Stimulus;
@@ -21,6 +25,13 @@ public class HumanAwakeDecision extends AbstractDecision {
 		String hightCat = b.getCategoryOfHightStimulus();
 		Stimulus s = b.poll(hightCat);
 		
+		// Check is Behaviour is Applicable
+		if( !h.getBehaviour().preCond() )
+			this.changeBehaviour(new DoNothingBehaviour(h));
+
+		if( h.getBehaviour().isDone() )
+			this.changeBehaviour(new DoNothingBehaviour(h));
+		
 		if(h.getBehaviour().getId().equalsIgnoreCase(SimulationConstants.STATE_DONOTHING) && hightCat == null)
 			this.changeBehaviour(new WalkInDirectionBehaviour(this.h, beings.random.nextDouble()*Math.PI*2));
 		
@@ -35,7 +46,10 @@ public class HumanAwakeDecision extends AbstractDecision {
 				this.changeBehaviour(new WalkNearAgentBehaviour(h, (Agent)s.getSource(), SimulationConstants.DIST_NEAR));
 			}
 			else if( hightCat.equals( SimulationConstants.PERC_HOTEL)){
-				this.changeBehaviour(new WalkNearAgentBehaviour(h, (Agent)s.getSource(), SimulationConstants.DIST_NEAR));
+				this.changeBehaviour(new CompositeBehaviour(h,
+						new WalkNearAgentBehaviour(h, (Hotel)s.getSource(), SimulationConstants.DIST_NEAR),
+						new SleepBehaviour(h, (Hotel)s.getSource()))
+				);
 			}
 			else{
 				this.changeBehaviour(new WalkInDirectionBehaviour(this.h, beings.random.nextDouble()*Math.PI*2));

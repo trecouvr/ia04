@@ -5,8 +5,8 @@ import fr.utc.ia04.agent.Human;
 
 public abstract class ProximityBehaviour extends Behaviour {
 
-	Agent other = null;
-	double minDist = 0;
+	Agent other;
+	double minDist;
 	
 	public ProximityBehaviour(Human h, String id, Agent o, double minDist) {
 		super(h, id);
@@ -15,12 +15,7 @@ public abstract class ProximityBehaviour extends Behaviour {
 	}
 	
 	public boolean preCond() {
-		// TODO Auto-generated method stub
-		return false;
+		return h.distance(other) <= minDist;
 	}
-
-	@Override
-	public boolean isDone() {
-		return h.distance(other) > minDist;
-	}
+	
 }

@@ -26,22 +26,24 @@ public class HumanAwakePerception extends AbstractPerception {
 		
 		Bag bag = beings.yard.getNeighborsWithinDistance(h.getPosition(), h.getPerceptionSkills());
 		for (Object o : bag) {
-			if (o instanceof FastFood) {
-				b.offer(SimulationConstants.PERC_FASTFOOD, stimulusFromAgentLocation((Agent)o));
+			
+			if(!o.equals(h)){
+			
+				if (o instanceof Human) {
+					b.offer(SimulationConstants.PERC_AGENT, new Stimulus( ( this.distanceIntensity((Human)o) + h.getPrioCoefSocial() ) / 2.0, o) );
+				}
+				else if (o instanceof FastFood) {
+					b.offer(SimulationConstants.PERC_FASTFOOD, new Stimulus( ( this.distanceIntensity((FastFood)o) + h.getPrioCoefEnergy() ) / 2.0, o) );
+				}
+				else if (o instanceof Hotel) {
+					b.offer(SimulationConstants.PERC_HOTEL, new Stimulus( ( this.distanceIntensity((Hotel)o) + h.getPrioCoefAwake() ) / 2.0, o) );
+				}
+			
 			}
-			else if (o instanceof Hotel) {
-				b.offer(SimulationConstants.PERC_HOTEL, stimulusFromAgentLocation((Agent)o));
-			}
+			
 		}
 		
 		return b;
-	}
-	
-	public Stimulus stimulusFromAgentLocation(Agent o) {
-		Double2D p = o.getPosition();
-		// todo normalize
-		double d = h.distance(o);
-		return new Stimulus(d, o);
 	}
 
 }

@@ -27,7 +27,7 @@ public class SpeakBehaviour extends ProximityBehaviour {
 	
 	@Override
 	public boolean isDone() {
-		return h.getSocial() >= 1.0 || super.isDone();
+		return h.getSocial() >= SimulationConstants.CHAR_MAX_SOCIAL;
 	}
 
 }

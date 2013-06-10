@@ -2,6 +2,7 @@ package fr.utc.ia04.perception;
 
 import sim.util.Double2D;
 import fr.utc.ia04.Module;
+import fr.utc.ia04.agent.Agent;
 import fr.utc.ia04.agent.Human;
 import fr.utc.ia04.simulation.Beings;
 import fr.utc.ia04.simulation.SimulationConstants;
@@ -33,5 +34,9 @@ public abstract class AbstractPerception extends Module {
 		double l = vect.length();
 		
 		return new Stimulus(-(l/size)*(l/size), dir);
+	}
+	
+	public double distanceIntensity(Agent o) {
+		return h.distance(o)/h.getPerceptionSkills();
 	}
 }

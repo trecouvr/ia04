@@ -31,9 +31,9 @@ public class Human extends Agent {
 	 * Charactéristiques du Métabolisme
 	 */
 	// Bases
-	protected double energy=100;
-	protected double awake=100;
-	protected double social=100;
+	protected double energy;
+	protected double awake;
+	protected double social;
 	// Dérivées
 	protected double prioCoefEnergy;
 	protected double prioCoefAwake;
@@ -202,12 +202,14 @@ public class Human extends Agent {
 	public void makeVampire() {
 		isVampire = true;
 		this.metabolism = new VampireMetabolism(this);
+		this.social=SimulationConstants.CHAR_MAX_SOCIAL;
+		this.awake=SimulationConstants.CHAR_MAX_AWAKE;
 		//this.perception = new AbstractPerception(this);
 	}
 	
 	//toString method to display the labelled Portrayal of Human Agent
 	public String toString(){
-		String label = String.format("%d", (int)this.globalHealth);
+		String label = "" + (int)(this.globalHealth*100);
 		return label;
 	}
 	

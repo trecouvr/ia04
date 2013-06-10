@@ -9,13 +9,13 @@ package fr.utc.ia04.simulation;
 public class SimulationConstants {
 
 	// Param Environement Simulation
-	public final static double	ENV_SIZE =					5;
+	public final static double	ENV_SIZE =					30;
 	public final static double	ENV_DISCRETIZATION =		0.1;
 	public final static double	ENV_DT =					0.0167;
 	
 	// Display
 	public final static double	DISP_SCALE_IMG =				1;
-	public final static double	DISP_SCALE_AGT =				0.2;
+	public final static double	DISP_SCALE_AGT =				0.6;
 	
 	// Proportion Agent
 	public final static int		NUM_HUMAN =					3;

@@ -20,7 +20,7 @@ import fr.utc.ia04.agent.Hotel;
 import fr.utc.ia04.agent.Human;
 
 public class BeingsWithUI extends GUIState {
-	public static int FRAME_SIZE = 500;
+	public static int FRAME_SIZE = 800;
 	public Display2D display;
 	public JFrame displayFrame;
 	ContinuousPortrayal2D yardPortrayal;

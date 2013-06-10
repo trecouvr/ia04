@@ -26,30 +26,31 @@ public class Beings extends SimState {
 		super.start();
 		yard.clear();
 		try {
-			for(int i=0; i<SimulationConstants.NUM_HUMAN; i++)
-				addAgent(Human.class);
-			for(int i=0; i<SimulationConstants.NUM_FASTFOOD; i++)
-				addAgent(FastFood.class);
-			for(int i=0; i<SimulationConstants.NUM_HOTEL; i++)
-				addAgent(Hotel.class);
+			for(int i=0; i<SimulationConstants.NUM_FASTFOOD; i++){
+				FastFood f = new FastFood(randomFreeLocation());
+				addAgent(f);
+			}
+			for(int i=0; i<SimulationConstants.NUM_HOTEL; i++){
+				Hotel h = new Hotel(randomFreeLocation());
+				addAgent(h);
+			}
+			for(int i=0; i<SimulationConstants.NUM_HUMAN; i++) {
+				Human h = new Human(randomFreeLocation());
+				if (i==0) {
+					h.makeVampire();
+				}
+				addAgent(h);
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
 	
-	@SuppressWarnings("rawtypes")
-	public void addAgent(Class clss) throws NoSuchMethodException, SecurityException, InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {
-		Double2D location = randomFreeLocation();
-		addAgent(clss, location);
-	}
 	
-	@SuppressWarnings({ "rawtypes", "unchecked" })
-	public void addAgent(Class clss, Double2D location) throws NoSuchMethodException, SecurityException, InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {
-		Constructor constructor = clss.getConstructor(Double2D.class);
-		Agent agent = (Agent)constructor.newInstance(location);
-		yard.setObjectLocation(agent,location);
-		Stoppable stoppable=schedule.scheduleRepeating(agent);
-		agent.stoppable=stoppable;
+	public void addAgent(Agent a) {
+		yard.setObjectLocation(a,a.getPosition());
+		Stoppable stoppable=schedule.scheduleRepeating(a);
+		a.stoppable=stoppable;
 	}
 	
 	public Double2D randomFreeLocation() {

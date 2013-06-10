@@ -69,9 +69,9 @@ public class BeingsWithUI extends GUIState {
 			public void draw(Object o, Graphics2D g, DrawInfo2D info){
 				Human h = (Human)o;
 				if (h.isVampire()){
-					this.paint = Color.YELLOW;
+					this.paint = new Color((int) (130+125*h.getGlobalHealth()),0,0);
 				}else {
-					this.paint=Color.RED;
+					this.paint = new Color(0,0,(int) (130+125*h.getGlobalHealth()));
 				}
 				
 				super.draw(o,g,info);

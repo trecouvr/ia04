@@ -23,12 +23,15 @@ public class SimulationConstants {
 	public final static int 	NUM_HOTEL =					1;
 	
 	// Param Agent
-	public final static double	CHAR_MAX_ENERGY =			100.0;
-	public final static double	CHAR_MAX_AWAKE =			100.0;
-	public final static double	CHAR_MAX_SOCIAL =			100.0;
+	public final static double	CHAR_MAX_ENERGY =			1.0;
+	public final static double	CHAR_MAX_AWAKE =			1.0;
+	public final static double	CHAR_MAX_SOCIAL =			1.0;
 	public final static double	CHAR_REG_EAT =				50.0;
 	public final static double	CHAR_REG_SLEEP =			5.0;
 	public final static double	CHAR_REG_SOCIAL =			2.0;
+	public final static double	METABOLISM_COEF_ENERGY =	1.0;
+	public final static double	METABOLISM_COEF_AWAKE =		.312;
+	public final static double	METABOLISM_COEF_SOCIAL =	.2;
 	
 	// Interactions Dist
 	public final static double	DIST_NEAR =					0.1;

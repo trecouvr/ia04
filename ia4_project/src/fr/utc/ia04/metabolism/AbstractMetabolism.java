@@ -29,7 +29,7 @@ public abstract class AbstractMetabolism extends Module {
 		//h.setGlobalHealth((-0.005*(h.getEnergy())+50) + ((h.getAwake())*-0.005+50) + ((h.getSocial())*-0.005+50));
 		//h.setGlobalHealth((Math.exp(h.getAwake()*0.05)+Math.exp(h.getEnergy()*0.05)+Math.exp(h.getSocial()*0.05))*100/445);
 		//h.setGlobalHealth(100-(((100-h.getEnergy())+(100-h.getAwake())+(100-h.getSocial()))*100/300));
-		h.setGlobalHealth(Math.min(Math.min(h.getEnergy(), h.getAwake()), h.getSocial()));
+		h.setGlobalHealth(Math.max(0, Math.min(Math.min(h.getEnergy(), h.getAwake()), h.getSocial())));
 	}
 
 }

@@ -15,7 +15,6 @@ public class SleepBehaviour extends ProximityBehaviour {
 	public void doAction(Beings b, double dt) {
 		double sleptValue = SimulationConstants.CHAR_REG_SLEEP*dt;
 		h.setAwake(h.getAwake()+sleptValue);
-		System.out.println("i sleep");
 	}
 
 	@Override

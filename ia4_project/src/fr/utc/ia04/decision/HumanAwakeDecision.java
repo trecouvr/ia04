@@ -1,10 +1,12 @@
 package fr.utc.ia04.decision;
 
 import fr.utc.ia04.agent.Agent;
+import fr.utc.ia04.agent.FastFood;
 import fr.utc.ia04.agent.Hotel;
 import fr.utc.ia04.agent.Human;
 import fr.utc.ia04.behaviour.CompositeBehaviour;
 import fr.utc.ia04.behaviour.DoNothingBehaviour;
+import fr.utc.ia04.behaviour.EatBehaviour;
 import fr.utc.ia04.behaviour.SleepBehaviour;
 import fr.utc.ia04.behaviour.WalkInDirectionBehaviour;
 import fr.utc.ia04.behaviour.WalkNearAgentBehaviour;
@@ -25,27 +27,32 @@ public class HumanAwakeDecision extends AbstractDecision {
 		String hightCat = b.getCategoryOfHightStimulus();
 		Stimulus s = b.poll(hightCat);
 		
-		// Check is Behaviour is Applicable
+		// Check if Behaviour is Applicable
 		if( !h.getBehaviour().preCond() )
 			this.changeBehaviour(new DoNothingBehaviour(h));
 
+		// Check if Behaviour is already Done
 		if( h.getBehaviour().isDone() )
 			this.changeBehaviour(new DoNothingBehaviour(h));
 		
+		// Check if agent is doing Nothing and See nothing
 		if(h.getBehaviour().getId().equalsIgnoreCase(SimulationConstants.STATE_DONOTHING) && hightCat == null)
 			this.changeBehaviour(new WalkInDirectionBehaviour(this.h, beings.random.nextDouble()*Math.PI*2));
 		
 		else if( hightCat != null && h.getBehaviour().evalGain() + 0.1 < s.getIntensity() )
-			if( hightCat.equals( SimulationConstants.PERC_MAPBORDER )){
+			if( hightCat.equals( SimulationConstants.PERC_MAPBORDER )){		// Detect MapBorder
 				this.changeBehaviour(new WalkInDirectionBehaviour(this.h, ((Double)s.getSource()) + Math.PI ));
 			}
-			else if( hightCat.equals( SimulationConstants.PERC_AGENT)){
+			else if( hightCat.equals( SimulationConstants.PERC_HUMAN)){		// Social need
 				this.changeBehaviour(new WalkNearAgentBehaviour(h, (Agent)s.getSource(), SimulationConstants.DIST_NEAR));
 			}
-			else if( hightCat.equals( SimulationConstants.PERC_FASTFOOD)){
-				this.changeBehaviour(new WalkNearAgentBehaviour(h, (Agent)s.getSource(), SimulationConstants.DIST_NEAR));
+			else if( hightCat.equals( SimulationConstants.PERC_FASTFOOD)){	// Energy need
+				this.changeBehaviour(new CompositeBehaviour(h,
+						new WalkNearAgentBehaviour(h, (Agent)s.getSource(), SimulationConstants.DIST_NEAR),
+						new EatBehaviour(h, (FastFood)s.getSource()))
+				);
 			}
-			else if( hightCat.equals( SimulationConstants.PERC_HOTEL)){
+			else if( hightCat.equals( SimulationConstants.PERC_HOTEL)){		// Awake need
 				this.changeBehaviour(new CompositeBehaviour(h,
 						new WalkNearAgentBehaviour(h, (Hotel)s.getSource(), SimulationConstants.DIST_NEAR),
 						new SleepBehaviour(h, (Hotel)s.getSource()))

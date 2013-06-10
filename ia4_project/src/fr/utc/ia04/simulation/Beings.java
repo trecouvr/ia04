@@ -1,8 +1,5 @@
 package fr.utc.ia04.simulation;
 
-import java.lang.reflect.Constructor;
-import java.lang.reflect.InvocationTargetException;
-
 import fr.utc.ia04.agent.Agent;
 import fr.utc.ia04.agent.FastFood;
 import fr.utc.ia04.agent.Human;
@@ -36,7 +33,7 @@ public class Beings extends SimState {
 			}
 			for(int i=0; i<SimulationConstants.NUM_HUMAN; i++) {
 				Human h = new Human(randomFreeLocation());
-				if (i==0) {
+				if (i==2) {
 					h.makeVampire();
 				}
 				addAgent(h);

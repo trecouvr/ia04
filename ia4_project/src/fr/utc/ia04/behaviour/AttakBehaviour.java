@@ -26,6 +26,6 @@ public class AttakBehaviour extends ProximityBehaviour {
 	
 	@Override
 	public boolean isDone() {
-		return other.getEnergy() <= 0.0 || super.isDone();
+		return other.getEnergy() <= 0.0;
 	}
 }

@@ -1,6 +1,7 @@
 package fr.utc.ia04.metabolism;
 
 import fr.utc.ia04.agent.Human;
+import fr.utc.ia04.simulation.SimulationConstants;
 
 public class HumanMetabolism extends AbstractMetabolism {
 
@@ -16,9 +17,9 @@ public class HumanMetabolism extends AbstractMetabolism {
 		h.setSocial(	h.getSocial() -	2*dt);
 		
 		// Priotity Part
-		h.setPrioCoefEnergy(	2*h.getEnergy()/100 );
-		h.setPrioCoefAwake(		2*h.getAwake()/100 );
-		h.setPrioCoefSocial(	2*h.getSocial()/100 );
+		h.setPrioCoefEnergy(	1-h.getEnergy()/SimulationConstants.CHAR_MAX_ENERGY );
+		h.setPrioCoefAwake(		1-h.getAwake()/SimulationConstants.CHAR_MAX_AWAKE );
+		h.setPrioCoefSocial(	1-h.getSocial()/SimulationConstants.CHAR_MAX_SOCIAL );
 	}
 
 }

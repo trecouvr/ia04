@@ -32,7 +32,7 @@ public class EatHumanBehaviour extends ProximityBehaviour {
 	
 	@Override
 	public boolean isDone() {
-		return other.getEnergy() <= 0 || h.getEnergy() >= 1.0 || super.isDone();
+		return other.getEnergy() <= 0 || h.getEnergy() >= SimulationConstants.CHAR_MAX_ENERGY;
 	}
 
 }

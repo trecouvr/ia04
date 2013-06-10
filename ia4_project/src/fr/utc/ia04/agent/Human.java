@@ -9,7 +9,6 @@ import fr.utc.ia04.metabolism.HumanMetabolism;
 import fr.utc.ia04.metabolism.VampireMetabolism;
 import fr.utc.ia04.perception.AbstractPerception;
 import fr.utc.ia04.perception.HumanAwakePerception;
-import fr.utc.ia04.perception.Stimulus;
 import fr.utc.ia04.perception.StimulusBag;
 import fr.utc.ia04.simulation.Beings;
 import fr.utc.ia04.simulation.SimulationConstants;
@@ -63,8 +62,14 @@ public class Human extends Agent {
 		this.decision =		new HumanAwakeDecision(this);
 		this.behaviour =	new DoNothingBehaviour(this);
 		
+		// Méta
+		this.energy = 0.75 * SimulationConstants.CHAR_MAX_ENERGY;
+		this.awake = 0.75 * SimulationConstants.CHAR_MAX_AWAKE;
+		this.social = 0.75 * SimulationConstants.CHAR_MAX_SOCIAL;
+		
 		// Characs
 		this.isVampire = false;
+		this.perceptionSkills = 2.0;
 		this.speed = 4.0;
 	}
 
@@ -140,26 +145,33 @@ public class Human extends Agent {
 	 * @param dt
 	 * 		Le temps pendant lequel exécuter l'action en heure.
 	 * @param pos
-	 * 		La position dont on veut que l'agent s'apporche
-	 * à une distance de DIST_NEAR.
+	 * 		La position dont on veut que l'agent s'approche
+	 * à une distance de nearDist.
+	 * @param nearDist
+	 * 		La distance à laquelle l'on souhaite se rapprocher
 	 * 
 	 * @return
 	 * 		La distance réellement parcourue.
 	 */
-	public double move(Beings b, double dt, Double2D pos){
+	public double move(Beings b, double dt, Double2D pos, double nearDist){
 		Double2D move = pos.subtract(position);
 		double l = move.length();
-		double lMax = dt*this.getSpeed();
 		
-		if(l > lMax)
-			move = move.multiply(lMax/l);
-		else
-			move = move.multiply((l-SimulationConstants.DIST_NEAR)/l);
-		
-		Double2D newLocation = this.getPosition().add(move);
-		this.setPosition(b, newLocation);
-		
-		return move.length();
+		if( l < nearDist )
+			return 0.0;
+		else{
+			double lMax = dt*this.getSpeed();
+			
+			if(l > lMax)
+				move = move.multiply(lMax/l);
+			else
+				move = move.multiply((l-nearDist)/l);
+			
+			Double2D newLocation = this.getPosition().add(move);
+			this.setPosition(b, newLocation);
+			
+			return move.length();
+		}
 	}
 	
 	/**

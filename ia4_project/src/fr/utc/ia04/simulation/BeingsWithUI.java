@@ -2,7 +2,6 @@ package fr.utc.ia04.simulation;
 
 import java.awt.Color;
 import java.awt.Graphics2D;
-import java.awt.Image;
 
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
@@ -12,7 +11,6 @@ import sim.display.Display2D;
 import sim.display.GUIState;
 import sim.engine.SimState;
 import sim.portrayal.DrawInfo2D;
-import sim.portrayal.Portrayal;
 import sim.portrayal.continuous.ContinuousPortrayal2D;
 import sim.portrayal.simple.ImagePortrayal2D;
 import sim.portrayal.simple.LabelledPortrayal2D;
@@ -66,7 +64,7 @@ public class BeingsWithUI extends GUIState {
 	
 	private LabelledPortrayal2D getHumanPortrayal(){
 		@SuppressWarnings("serial")
-		OvalPortrayal2D r = new OvalPortrayal2D(1.2){
+		OvalPortrayal2D r = new OvalPortrayal2D(SimulationConstants.DISP_SCALE_AGT){
 			@Override
 			public void draw(Object o, Graphics2D g, DrawInfo2D info){
 				Human h = (Human)o;
@@ -90,11 +88,11 @@ public class BeingsWithUI extends GUIState {
 	
 	
 	private ImagePortrayal2D getFastFoodPortrayal() {
-		return new ImagePortrayal2D(new ImageIcon("fastfood.png"), 10);
+		return new ImagePortrayal2D(new ImageIcon("fastfood.png"), SimulationConstants.DISP_SCALE_IMG);
 	}
 	
 	
 	private ImagePortrayal2D getHotelPortrayal(){
-		return new ImagePortrayal2D(new ImageIcon("hostel.png"), 10);
+		return new ImagePortrayal2D(new ImageIcon("hostel.png"), SimulationConstants.DISP_SCALE_IMG);
 	}
 }

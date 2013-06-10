@@ -7,6 +7,7 @@ import fr.utc.ia04.simulation.SimulationConstants;
 public class WalkInDirectionBehaviour extends CyclicBehaviour {
 
 	private double direction;
+	private double walkedDist;
 	
 	public WalkInDirectionBehaviour(Human h, double direction) {
 		super(h, SimulationConstants.STATE_WALKING);
@@ -20,13 +21,13 @@ public class WalkInDirectionBehaviour extends CyclicBehaviour {
 
 	@Override
 	public void doAction(Beings b, double dt) {
-		this.h.move(b, dt, direction);
+		this.walkedDist += this.h.move(b, dt, direction);
 		
 	}
 
 	@Override
 	public double evalGain() {
-		return SimulationConstants.GAIN_LOW;
+		return SimulationConstants.GAIN_LOW / this.walkedDist;
 	}
 
 }

@@ -29,7 +29,7 @@ public abstract class AbstractPerception extends Module {
 		Double2D center = new Double2D(size,size);
 		Double2D vect = h.getPosition().subtract(center);
 		
-		// La direction du 
+		// La direction du stimulus
 		double dir = vect.angle();
 		double l = vect.length();
 		
@@ -37,6 +37,7 @@ public abstract class AbstractPerception extends Module {
 	}
 	
 	public double distanceIntensity(Agent o) {
-		return h.distance(o)/h.getPerceptionSkills();
+		double d = 1-h.distance(o)/h.getPerceptionSkills();
+		return d*d;
 	}
 }

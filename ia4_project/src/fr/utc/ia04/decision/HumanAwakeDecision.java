@@ -5,12 +5,13 @@ import fr.utc.ia04.agent.FastFood;
 import fr.utc.ia04.agent.Hotel;
 import fr.utc.ia04.agent.Human;
 import fr.utc.ia04.behaviour.CompositeBehaviour;
-import fr.utc.ia04.behaviour.DoNothingBehaviour;
-import fr.utc.ia04.behaviour.EatBehaviour;
-import fr.utc.ia04.behaviour.SleepBehaviour;
-import fr.utc.ia04.behaviour.SpeakBehaviour;
-import fr.utc.ia04.behaviour.WalkInDirectionBehaviour;
-import fr.utc.ia04.behaviour.WalkNearAgentBehaviour;
+import fr.utc.ia04.behaviour.speBehaviour.DoNothingBehaviour;
+import fr.utc.ia04.behaviour.speBehaviour.EatBehaviour;
+import fr.utc.ia04.behaviour.speBehaviour.RunAwayBehaviour;
+import fr.utc.ia04.behaviour.speBehaviour.SleepBehaviour;
+import fr.utc.ia04.behaviour.speBehaviour.SpeakBehaviour;
+import fr.utc.ia04.behaviour.speBehaviour.WalkInDirectionBehaviour;
+import fr.utc.ia04.behaviour.speBehaviour.WalkNearAgentBehaviour;
 import fr.utc.ia04.perception.Stimulus;
 import fr.utc.ia04.perception.StimulusBag;
 import fr.utc.ia04.simulation.Beings;
@@ -61,6 +62,9 @@ public class HumanAwakeDecision extends AbstractDecision {
 						new WalkNearAgentBehaviour(h, (Hotel)s.getSource(), SimulationConstants.DIST_NEAR),
 						new SleepBehaviour(h, (Hotel)s.getSource()))
 				);
+			}
+			else if( hightCat.equals( SimulationConstants.PERC_VAMPIRE)){		// Vampire risk
+				this.changeBehaviour(new RunAwayBehaviour(h, (Agent)s.getSource()));
 			}
 			else{
 				this.changeBehaviour(new WalkInDirectionBehaviour(this.h, beings.random.nextDouble()*Math.PI*2));

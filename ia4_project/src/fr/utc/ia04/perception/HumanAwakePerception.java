@@ -1,8 +1,6 @@
 package fr.utc.ia04.perception;
 
 import sim.util.Bag;
-import sim.util.Double2D;
-import fr.utc.ia04.agent.Agent;
 import fr.utc.ia04.agent.FastFood;
 import fr.utc.ia04.agent.Hotel;
 import fr.utc.ia04.agent.Human;
@@ -18,7 +16,7 @@ public class HumanAwakePerception extends AbstractPerception {
 	@Override
 	public StimulusBag makePerception(Beings beings, double dt) {
 		
-		StimulusBag b = new StimulusBag();
+		StimulusBag b = new StimulusBag(0.3);
 		
 		Stimulus s = this.detectNearestMapBorder(beings);
 		if( s.getIntensity() > 0.9 )
@@ -32,8 +30,9 @@ public class HumanAwakePerception extends AbstractPerception {
 				if (o instanceof Human) {
 				//TO DO : difference human/vampire
 				
-					if (h.knowThisVampire((Human)o)){
-						b.offer(SimulationConstants.PERC_VAMPIRE, new Stimulus(this.distanceIntensity((Human)o) * -1 , o));
+					//if (h.knowThisVampire((Human)o)){
+					if (((Human)o).isVampire()){
+						b.offer(SimulationConstants.PERC_VAMPIRE, new Stimulus(-this.distanceIntensity((Human)o) , o));
 					}
 					else{
 						b.offer(SimulationConstants.PERC_HUMAN, new Stimulus( 0.3*this.distanceIntensity((Human)o) + 0.7*h.getPrioCoefSocial(), o) );

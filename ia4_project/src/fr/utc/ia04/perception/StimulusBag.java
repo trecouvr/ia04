@@ -10,13 +10,15 @@ public class StimulusBag {
 	 * Attributs
 	 */
 	private HashMap<String, PriorityQueue<Stimulus> > map;
+	private double minIntensity;
 	
 	/*
 	 * Constructor
 	 */
-	public StimulusBag() {
+	public StimulusBag(double minIntensity) {
 		super();
 		map = new HashMap<String, PriorityQueue<Stimulus> >();
+		this.minIntensity = minIntensity;
 	}
 	
 	/*
@@ -37,13 +39,17 @@ public class StimulusBag {
 	
 	public void offer(String category, Stimulus s){
 		
-		PriorityQueue<Stimulus> queue = map.get(category);
+		if(s.getIntensity() >= this.minIntensity){
 		
-		if(queue == null){
-			queue = new PriorityQueue<Stimulus>(10);
-			map.put(category, queue);
+			PriorityQueue<Stimulus> queue = map.get(category);
+			
+			if(queue == null){
+				queue = new PriorityQueue<Stimulus>(10);
+				map.put(category, queue);
+			}
+			queue.add(s);
+		
 		}
-		queue.add(s);
 	}
 	
 	public Stimulus poll(String category){

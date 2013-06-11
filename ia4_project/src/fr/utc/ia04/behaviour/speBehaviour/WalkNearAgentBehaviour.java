@@ -1,7 +1,8 @@
-package fr.utc.ia04.behaviour;
+package fr.utc.ia04.behaviour.speBehaviour;
 
 import fr.utc.ia04.agent.Agent;
 import fr.utc.ia04.agent.Human;
+import fr.utc.ia04.behaviour.Behaviour;
 import fr.utc.ia04.simulation.Beings;
 import fr.utc.ia04.simulation.SimulationConstants;
 

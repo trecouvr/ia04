@@ -3,7 +3,7 @@ package fr.utc.ia04.agent;
 import java.util.ArrayList;
 
 import fr.utc.ia04.behaviour.Behaviour;
-import fr.utc.ia04.behaviour.DoNothingBehaviour;
+import fr.utc.ia04.behaviour.speBehaviour.DoNothingBehaviour;
 import fr.utc.ia04.decision.AbstractDecision;
 import fr.utc.ia04.decision.HumanAwakeDecision;
 import fr.utc.ia04.metabolism.AbstractMetabolism;
@@ -78,7 +78,7 @@ public class Human extends Agent {
 		
 		// Characs
 		this.isVampire = false;
-		this.perceptionSkills = 2.0;
+		this.perceptionSkills = 17.0;
 		this.speed = 4.0;
 		
 		this.knownVampire = new ArrayList<Human>();

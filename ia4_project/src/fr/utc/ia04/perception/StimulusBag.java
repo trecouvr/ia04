@@ -17,7 +17,7 @@ public class StimulusBag {
 	 */
 	public StimulusBag(double minIntensity) {
 		super();
-		map = new HashMap<String, PriorityQueue<Stimulus> >();
+		map = new HashMap<String, PriorityQueue<Stimulus> >(100);
 		this.minIntensity = minIntensity;
 	}
 	
@@ -58,8 +58,12 @@ public class StimulusBag {
 		
 		if( queue == null )
 			return null;
-		else
-			return queue.poll();
+		else{
+			Stimulus s = queue.poll();
+			if(queue.isEmpty())
+				map.remove(category);
+			return s;
+		}
 	}
 
 }

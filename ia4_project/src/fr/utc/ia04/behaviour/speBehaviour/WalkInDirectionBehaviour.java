@@ -30,5 +30,19 @@ public class WalkInDirectionBehaviour extends CyclicBehaviour {
 	public double evalGain() {
 		return SimulationConstants.GAIN_LOW / this.walkedDist;
 	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (!super.equals(obj))
+			return false;
+		
+		WalkInDirectionBehaviour other = (WalkInDirectionBehaviour) obj;
+		if (Double.doubleToLongBits(direction) != Double
+				.doubleToLongBits(other.direction))
+			return false;
+		return true;
+	}
 
 }

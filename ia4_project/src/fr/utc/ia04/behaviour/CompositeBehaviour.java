@@ -55,4 +55,24 @@ public class CompositeBehaviour extends Behaviour {
 			return b2.evalGain();
 	}
 
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (!super.equals(obj))
+			return false;
+
+		CompositeBehaviour other = (CompositeBehaviour) obj;
+		if (!b1.equals(other.b1))
+			return false;
+		if (!b2.equals(other.b2))
+			return false;
+		return true;
+	}
+
+	@Override
+	public String toString() {
+		return "CompositeBehaviour [b1=" + b1 + ", b2=" + b2 + "]";
+	}
+
 }

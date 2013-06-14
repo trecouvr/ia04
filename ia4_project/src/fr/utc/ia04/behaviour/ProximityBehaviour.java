@@ -17,5 +17,16 @@ public abstract class ProximityBehaviour extends Behaviour {
 	public boolean preCond() {
 		return h.distance(other) <= minDist;
 	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (!super.equals(obj))
+			return false;
+		
+		ProximityBehaviour beh = (ProximityBehaviour) obj;
+		return this.other == beh.other;
+	}
 	
 }

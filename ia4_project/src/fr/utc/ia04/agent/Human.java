@@ -54,6 +54,7 @@ public class Human extends Agent {
 	 */
 	private double speed; // km/h
 	private boolean isVampire;
+	private double timeLife;
 	
 	/*
 	 * Liste des vampires connus
@@ -80,6 +81,7 @@ public class Human extends Agent {
 		this.isVampire = false;
 		this.perceptionSkills = 17.0;
 		this.speed = 4.0;
+		this.timeLife = 0.0;
 		
 		this.knownVampire = new ArrayList<Human>();
 	}
@@ -113,9 +115,9 @@ public class Human extends Agent {
 	public void setSpeed(double speed) {this.speed = speed;}
 	public double getGlobalHealth() {return globalHealth;}
 	public void setGlobalHealth(double globalHealth) {this.globalHealth = globalHealth;}
-	public ArrayList<Human> getKnownVampire(){return this.knownVampire;};
+	public ArrayList<Human> getKnownVampire(){return this.knownVampire;}
+	public double getTimeLife() {return timeLife;}
 
-	
 	/*
 	 * Step Method
 	 * 
@@ -144,6 +146,9 @@ public class Human extends Agent {
 		
 		// Action
 		this.behaviour.doAction(b, dt);
+		
+		// Update Time Life
+		this.timeLife += dt;
 		
 	}
 	
@@ -220,7 +225,8 @@ public class Human extends Agent {
 	
 	//toString method to display the labelled Portrayal of Human Agent
 	public String toString(){
-		String label = "" + (int)(this.globalHealth*100);
+		//String label = "" + (int)(this.globalHealth*100);
+		String label = "" + (int)(this.energy*9)+ (int)(this.awake*9)+ (int)(this.social*9);
 		return label;
 	}
 	

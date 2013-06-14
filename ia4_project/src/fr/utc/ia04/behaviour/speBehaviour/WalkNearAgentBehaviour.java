@@ -44,4 +44,15 @@ public class WalkNearAgentBehaviour extends Behaviour {
 			return SimulationConstants.GAIN_HIGHT * (evaluatedDist / walkedDist);
 	}
 
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (!super.equals(obj))
+			return false;
+		
+		WalkNearAgentBehaviour other = (WalkNearAgentBehaviour) obj;
+		return this.target == other.target;
+	}
+
 }

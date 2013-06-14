@@ -42,4 +42,15 @@ public class RunAwayBehaviour extends Behaviour {
 		return SimulationConstants.DIST_SECURE<=agentDist;
 	}
 
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (!super.equals(obj))
+			return false;
+		
+		RunAwayBehaviour other = (RunAwayBehaviour) obj;
+		return this.other == other.other;
+	}
+
 }

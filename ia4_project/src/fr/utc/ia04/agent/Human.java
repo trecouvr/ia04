@@ -104,11 +104,17 @@ public class Human extends Agent {
 	public Behaviour getBehaviour() {return behaviour;}
 	public void setBehaviour(Behaviour behaviour) {this.behaviour = behaviour;}
 	public double getEnergy() {return energy;}
-	public void setEnergy(double energy) {this.energy = energy;}
+	public void setEnergy(double energy) {
+		this.energy = Math.max(0, Math.min(SimulationConstants.CHAR_MAX_ENERGY, energy));
+	}
 	public double getAwake() {return awake;}
-	public void setAwake(double awake) {this.awake = awake;}
+	public void setAwake(double awake) {
+		this.awake = Math.max(0, Math.min(SimulationConstants.CHAR_MAX_AWAKE, awake));
+	}
 	public double getSocial() {return social;}
-	public void setSocial(double social) {this.social = social;}
+	public void setSocial(double social) {
+		this.social = Math.max(0, Math.min(SimulationConstants.CHAR_MAX_SOCIAL, social));
+	}
 	public double getPrioCoefEnergy() {return prioCoefEnergy;}
 	public void setPrioCoefEnergy(double prioCoefEnergy) {this.prioCoefEnergy = prioCoefEnergy;}
 	public double getPrioCoefAwake() {return prioCoefAwake;}

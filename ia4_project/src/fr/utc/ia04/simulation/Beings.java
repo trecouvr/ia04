@@ -1,5 +1,8 @@
 package fr.utc.ia04.simulation;
 
+import java.io.File;
+import java.util.Scanner;
+
 import fr.utc.ia04.agent.Agent;
 import fr.utc.ia04.agent.FastFood;
 import fr.utc.ia04.agent.Human;
@@ -22,6 +25,8 @@ public class Beings extends SimState {
 	public void start() {
 		super.start();
 		yard.clear();
+		Scanner sc;
+		
 		try {
 			for(int i=0; i<SimulationConstants.NUM_FASTFOOD; i++){
 				FastFood f = new FastFood(randomFreeLocation());
@@ -31,12 +36,24 @@ public class Beings extends SimState {
 				Hotel h = new Hotel(randomFreeLocation());
 				addAgent(h);
 			}
+			
+			sc = new Scanner(new File("friends.txt"));
+			sc.useDelimiter(";");
+			
 			for(int i=0; i<SimulationConstants.NUM_HUMAN; i++) {
-				Human h = new Human(randomFreeLocation());
-				if (i==2) {
-					h.makeVampire();
+				if(sc.hasNext()){
+					Human h = new Human(randomFreeLocation(), sc.next());
+					addAgent(h);
 				}
-				addAgent(h);
+				else System.out.println("Pas assez d'amis !!");
+			}
+			for(int i=0; i<SimulationConstants.NUM_VAMPIRES; i++) {
+				if(sc.hasNext()){
+					Human h = new Human(randomFreeLocation(), sc.next());
+					h.makeVampire();
+					addAgent(h);
+				}
+				else System.out.println("Pas assez d'amis !!");
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

@@ -21,6 +21,8 @@ import sim.util.Double2D;
 public class Human extends Agent {
 	private static final long serialVersionUID = -597396855800601330L;
 	
+	protected String name;
+	
 	/*
 	 * Modules
 	 */
@@ -64,7 +66,7 @@ public class Human extends Agent {
 	/*
 	 * Constructeur
 	 */
-	public Human(Double2D location) {
+	public Human(Double2D location, String name) {
 		super(location);
 		// Modules
 		this.metabolism =	new HumanMetabolism(this);
@@ -84,6 +86,8 @@ public class Human extends Agent {
 		this.timeLife = 0.0;
 		
 		this.knownVampire = new ArrayList<Human>();
+		
+		this.name=name;
 	}
 
 	/*
@@ -226,7 +230,7 @@ public class Human extends Agent {
 	//toString method to display the labelled Portrayal of Human Agent
 	public String toString(){
 		//String label = "" + (int)(this.globalHealth*100);
-		String label = "" + (int)(this.energy*9)+ (int)(this.awake*9)+ (int)(this.social*9);
+		String label = this.name + " (" + (int)(this.energy*9)+ (int)(this.awake*9)+ (int)(this.social*9) + ")";
 		return label;
 	}
 	

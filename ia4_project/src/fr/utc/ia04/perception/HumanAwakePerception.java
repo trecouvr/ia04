@@ -25,18 +25,17 @@ public class HumanAwakePerception extends AbstractPerception {
 		Bag bag = beings.yard.getNeighborsWithinDistance(h.getPosition(), h.getPerceptionSkills());
 		for (Object o : bag) {
 			
-			if(!o.equals(h)){
-			
-				if (o instanceof Human) {
-				//TO DO : difference human/vampire
+			if(o != h) {
 				
+				if (o instanceof Human) {
 					//if (h.knowThisVampire((Human)o)){
-					if (((Human)o).isVampire()){
-						b.offer(SimulationConstants.PERC_VAMPIRE, new Stimulus(-this.distanceIntensity((Human)o) , o));
-					}
-					else{
+					// TODO
+					//if (((Human)o).isVampire()){
+					//	b.offer(SimulationConstants.PERC_VAMPIRE, new Stimulus( -1 /*0.3*this.distanceIntensity((Human)o)*/ , o));
+					//}
+					//else{
 						b.offer(SimulationConstants.PERC_HUMAN, new Stimulus( 0.3*this.distanceIntensity((Human)o) + 0.7*h.getPrioCoefSocial(), o) );
-					}
+					//}
 
 				}
 				else if (o instanceof FastFood) {

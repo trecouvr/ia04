@@ -6,12 +6,14 @@ import fr.utc.ia04.behaviour.Behaviour;
 import fr.utc.ia04.behaviour.speBehaviour.DoNothingBehaviour;
 import fr.utc.ia04.decision.AbstractDecision;
 import fr.utc.ia04.decision.HumanAwakeDecision;
+import fr.utc.ia04.decision.VampireDecision;
 import fr.utc.ia04.metabolism.AbstractMetabolism;
 import fr.utc.ia04.metabolism.HumanMetabolism;
 import fr.utc.ia04.metabolism.VampireMetabolism;
 import fr.utc.ia04.perception.AbstractPerception;
 import fr.utc.ia04.perception.HumanAwakePerception;
 import fr.utc.ia04.perception.StimulusBag;
+import fr.utc.ia04.perception.VampirePerception;
 import fr.utc.ia04.simulation.Beings;
 import fr.utc.ia04.simulation.SimulationConstants;
 
@@ -102,11 +104,17 @@ public class Human extends Agent {
 	public Behaviour getBehaviour() {return behaviour;}
 	public void setBehaviour(Behaviour behaviour) {this.behaviour = behaviour;}
 	public double getEnergy() {return energy;}
-	public void setEnergy(double energy) {this.energy = energy;}
+	public void setEnergy(double energy) {
+		this.energy = Math.max(0, Math.min(SimulationConstants.CHAR_MAX_ENERGY, energy));
+	}
 	public double getAwake() {return awake;}
-	public void setAwake(double awake) {this.awake = awake;}
+	public void setAwake(double awake) {
+		this.awake = Math.max(0, Math.min(SimulationConstants.CHAR_MAX_AWAKE, awake));
+	}
 	public double getSocial() {return social;}
-	public void setSocial(double social) {this.social = social;}
+	public void setSocial(double social) {
+		this.social = Math.max(0, Math.min(SimulationConstants.CHAR_MAX_SOCIAL, social));
+	}
 	public double getPrioCoefEnergy() {return prioCoefEnergy;}
 	public void setPrioCoefEnergy(double prioCoefEnergy) {this.prioCoefEnergy = prioCoefEnergy;}
 	public double getPrioCoefAwake() {return prioCoefAwake;}
@@ -224,7 +232,8 @@ public class Human extends Agent {
 		this.metabolism = new VampireMetabolism(this);
 		this.social=SimulationConstants.CHAR_MAX_SOCIAL;
 		this.awake=SimulationConstants.CHAR_MAX_AWAKE;
-		//this.perception = new AbstractPerception(this);
+		this.decision = new VampireDecision(this);
+		this.perception = new VampirePerception(this);
 	}
 	
 	//toString method to display the labelled Portrayal of Human Agent

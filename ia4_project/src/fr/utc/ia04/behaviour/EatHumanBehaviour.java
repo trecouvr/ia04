@@ -21,18 +21,17 @@ public class EatHumanBehaviour extends ProximityBehaviour {
 	public void doAction(Beings b, double dt) {
 		// TODO fixer coeffs
 		other.setEnergy(other.getEnergy()-dt*2.0);  // décrémente l'énergy de l'humain
-		h.setEnergy(h.getEnergy()+dt*2.0);			// monte l'énergy du vampire
+		h.setEnergy(h.getEnergy()+dt*4.0);			// monte l'énergy du vampire
 	}
 
 	@Override
 	public double evalGain() {
-		// TODO Auto-generated method stub
-		return 0;
+		return SimulationConstants.GAIN_MAX;
 	}
 	
 	@Override
 	public boolean isDone() {
-		return other.getEnergy() <= 0 || h.getEnergy() >= SimulationConstants.CHAR_MAX_ENERGY;
+		return h.getEnergy() >= SimulationConstants.CHAR_MAX_ENERGY;
 	}
 
 }

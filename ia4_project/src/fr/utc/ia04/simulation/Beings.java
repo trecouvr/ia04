@@ -37,7 +37,7 @@ public class Beings extends SimState {
 				addAgent(h);
 			}
 			
-			sc = new Scanner(new File("../friends.txt"));
+			sc = new Scanner(new File("friends.txt"));
 			sc.useDelimiter(";");
 			
 			for(int i=0; i<SimulationConstants.NUM_VAMPIRES; i++) {

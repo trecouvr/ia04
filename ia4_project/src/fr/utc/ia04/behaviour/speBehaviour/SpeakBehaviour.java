@@ -46,7 +46,7 @@ public class SpeakBehaviour extends ProximityBehaviour {
 
 	@Override
 	public double evalGain() {
-		if (this.nbStep < 3){
+		/*if (this.nbStep < 3){
 			return SimulationConstants.GAIN_LOW;
 		}
 		else if (this.nbStep >= 3 && this.nbStep < 6){
@@ -54,7 +54,8 @@ public class SpeakBehaviour extends ProximityBehaviour {
 		}
 		else {
 			return SimulationConstants.GAIN_HIGHT;
-		}
+		}*/
+		return SimulationConstants.GAIN_HIGHT;
 		
 	}
 	

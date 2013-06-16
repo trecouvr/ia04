@@ -17,7 +17,7 @@ public class EatHumanBehaviour extends ProximityBehaviour {
 	
 	@Override
 	public boolean preCond() {
-		return (h.isVampire());
+		return (h.isVampire() && !other.isVampire());
 	}
 
 	@Override

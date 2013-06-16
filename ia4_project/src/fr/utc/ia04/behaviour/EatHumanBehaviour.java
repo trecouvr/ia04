@@ -40,7 +40,7 @@ public class EatHumanBehaviour extends ProximityBehaviour {
 	
 	@Override
 	public boolean isDone() {
-		return (h.getEnergy() >= SimulationConstants.CHAR_MAX_ENERGY || other.isVampire());
+		return (h.getEnergy() >= SimulationConstants.CHAR_MAX_ENERGY || other.isVampire() || other.getEnergy()==0);
 	}
 
 }

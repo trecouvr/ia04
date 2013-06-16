@@ -18,7 +18,7 @@ public class SpeakBehaviour extends ProximityBehaviour {
 	
 	@Override
 	public void doAction(Beings b, double dt) {
-		h.setSocial(h.getSocial()+dt*0.2); // TODO régler le coeff
+		h.setSocial(h.getSocial()+dt*SimulationConstants.CHAR_REG_SOCIAL);
 		
 		nbStep++;
 		
@@ -46,15 +46,6 @@ public class SpeakBehaviour extends ProximityBehaviour {
 
 	@Override
 	public double evalGain() {
-		/*if (this.nbStep < 3){
-			return SimulationConstants.GAIN_LOW;
-		}
-		else if (this.nbStep >= 3 && this.nbStep < 6){
-			return 2* SimulationConstants.GAIN_LOW;
-		}
-		else {
-			return SimulationConstants.GAIN_HIGHT;
-		}*/
 		return SimulationConstants.GAIN_HIGHT;
 		
 	}

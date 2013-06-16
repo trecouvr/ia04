@@ -245,10 +245,10 @@ public class Human extends Agent {
 		//String label = "" + (int)(this.globalHealth*100);
 		String label;
 		if (this.isVampire){
-			label= this.name + " (" + (int)(this.globalHealth*100) + ")";
+			label= ((SimulationConstants.DISP_SHOW_NAMES)?this.name:"") + " (" + (int)(this.globalHealth*100) + ")";
 		}
 		else{
-			label= this.name + " (" + (int)(this.globalHealth*100) + ") |"+this.knownVampire.size();
+			label= ((SimulationConstants.DISP_SHOW_NAMES)?this.name:"") + " (" + (int)(this.globalHealth*100) + ") |"+this.knownVampire.size();
 		}
 		
 		return label;

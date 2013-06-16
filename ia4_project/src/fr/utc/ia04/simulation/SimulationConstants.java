@@ -18,7 +18,7 @@ public class SimulationConstants {
 	public final static double	DISP_SCALE_AGT =				0.6;
 
 	// Proportion Agent
-	public final static int		NUM_HUMAN =					30;//3;
+	public final static int		NUM_HUMAN =					100;//3;
 	public final static int		NUM_VAMPIRES =				1;//0;
 	public final static int		NUM_FASTFOOD =				3;//2;
 	public final static int 	NUM_HOTEL =					3;

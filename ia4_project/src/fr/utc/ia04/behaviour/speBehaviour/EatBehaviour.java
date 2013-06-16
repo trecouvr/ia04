@@ -9,7 +9,7 @@ import fr.utc.ia04.simulation.SimulationConstants;
 public class EatBehaviour extends ProximityBehaviour {
 
 	public EatBehaviour(Human h, FastFood o) {
-		super(h, SimulationConstants.STATE_EATING, o, 1.0); // TODO fixer la distance minimale
+		super(h, SimulationConstants.STATE_EATING, o, SimulationConstants.DIST_INTERACT); // TODO fixer la distance minimale
 	}
 
 	@Override

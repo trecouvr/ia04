@@ -239,7 +239,14 @@ public class Human extends Agent {
 	//toString method to display the labelled Portrayal of Human Agent
 	public String toString(){
 		//String label = "" + (int)(this.globalHealth*100);
-		String label = this.name + " (" + (int)(this.globalHealth*100) + ")";
+		String label;
+		if (this.isVampire){
+			label= this.name + " (" + (int)(this.globalHealth*100) + ")";
+		}
+		else{
+			label= this.name + " (" + (int)(this.globalHealth*100) + ")|"+this.knownVampire.size();
+		}
+		
 		return label;
 	}
 	

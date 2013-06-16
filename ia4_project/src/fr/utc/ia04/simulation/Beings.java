@@ -37,16 +37,9 @@ public class Beings extends SimState {
 				addAgent(h);
 			}
 			
-			sc = new Scanner(new File("friends.txt"));
+			sc = new Scanner(new File("../friends.txt"));
 			sc.useDelimiter(";");
 			
-			for(int i=0; i<SimulationConstants.NUM_HUMAN; i++) {
-				if(sc.hasNext()){
-					Human h = new Human(randomFreeLocation(), sc.next());
-					addAgent(h);
-				}
-				else System.out.println("Pas assez d'amis !!");
-			}
 			for(int i=0; i<SimulationConstants.NUM_VAMPIRES; i++) {
 				if(sc.hasNext()){
 					Human h = new Human(randomFreeLocation(), sc.next());
@@ -55,6 +48,27 @@ public class Beings extends SimState {
 				}
 				else System.out.println("Pas assez d'amis !!");
 			}
+			
+			
+			for(int i=0; i<SimulationConstants.NUM_HUMAN; i++) {
+				if(sc.hasNext()){
+					Human h = new Human(randomFreeLocation(), sc.next());
+					
+					if (i==0){
+						//First human know every vampire
+						for (Object o: yard.allObjects){
+							if (o instanceof Human && ((Human) o).isVampire()) {
+								h.addKnownVampire((Human)o);
+							}
+							
+						}
+						
+					}
+					addAgent(h);
+				}
+				else System.out.println("Pas assez d'amis !!");
+			}
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

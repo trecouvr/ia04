@@ -10,7 +10,7 @@ public class SimulationConstants {
 
 	// Param Environement Simulation
 	public final static double	ENV_SIZE =					30;
-	public final static double	ENV_DISCRETIZATION =		1;
+	public final static double	ENV_DISCRETIZATION =		1.0;
 	public final static double	ENV_DT =					0.0167;
 	
 	// Display
@@ -21,7 +21,7 @@ public class SimulationConstants {
 	public final static int		NUM_HUMAN =					10;//3;
 	public final static int		NUM_VAMPIRES =				1;//0;
 	public final static int		NUM_FASTFOOD =				3;//2;
-	public final static int 	NUM_HOTEL =					1;
+	public final static int 	NUM_HOTEL =					3;
 	
 	// Param Agent
 	public final static int		MEM_MIN_EXP =				3;

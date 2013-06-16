@@ -46,23 +46,18 @@ public class HumanAwakeDecision extends AbstractDecision {
 			
 			while( hightCat != null && ( newBeh==null || newBeh.isDone() ) && ( changeBeh || h.getBehaviour().evalGain() + 0.05 < s.getIntensity() ) ){
 				
-				Double experimentedGain = null;
-				
 				// Choice process
 				if( hightCat.equals( SimulationConstants.PERC_MAPBORDER )){			// Detect MapBorder
 					newBeh = new WalkInDirectionBehaviour(this.h, ((Double)s.getSource()) + Math.PI );
 				}
 				else if( hightCat.equals( SimulationConstants.PERC_HUMAN)){			// Social need
 					newBeh = new CompositeBehaviour(h,new WalkNearAgentBehaviour(h, (Human)s.getSource(), SimulationConstants.DIST_NEAR),new SpeakBehaviour(h, (Human)s.getSource()));
-					experimentedGain = this.getExperimentedGain(newBeh);
 				}
 				else if( hightCat.equals( SimulationConstants.PERC_FASTFOOD)){		// Energy need
 					newBeh = new CompositeBehaviour(h,new WalkNearAgentBehaviour(h, (Agent)s.getSource(), SimulationConstants.DIST_NEAR),new EatBehaviour(h, (FastFood)s.getSource()));
-					experimentedGain = this.getExperimentedGain(newBeh);
 				}
 				else if( hightCat.equals( SimulationConstants.PERC_HOTEL)){			// Awake need
 					newBeh = new CompositeBehaviour(h,new WalkNearAgentBehaviour(h, (Hotel)s.getSource(), SimulationConstants.DIST_NEAR),new SleepBehaviour(h, (Hotel)s.getSource()));
-					experimentedGain = this.getExperimentedGain(newBeh);
 				}
 				else if( hightCat.equals( SimulationConstants.PERC_VAMPIRE)){		// Vampire risk
 					newBeh = new RunAwayBehaviour(h, (Agent)s.getSource());
@@ -70,9 +65,6 @@ public class HumanAwakeDecision extends AbstractDecision {
 				else{
 					newBeh = new WalkInDirectionBehaviour(this.h, beings.random.nextDouble()*Math.PI*2);	// Default Behaviour
 				}
-				
-				//if( experimentedGain != null && experimentedGain < 0 )
-					//newBeh = null;
 				
 				hightCat = b.getCategoryOfHightStimulus();
 				s = b.poll(hightCat);

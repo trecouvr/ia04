@@ -10,7 +10,7 @@ public class EatHumanBehaviour extends ProximityBehaviour {
 	protected double chanceToGetVampire;
 	
 	public EatHumanBehaviour(Human h, Human o) {
-		super(h, SimulationConstants.STATE_EATINGHUM, o, SimulationConstants.DIST_NEAR);
+		super(h, SimulationConstants.STATE_EATINGHUM, o, SimulationConstants.DIST_INTERACT);
 		chanceToGetVampire = Math.random();
 		this.other = o;
 	}

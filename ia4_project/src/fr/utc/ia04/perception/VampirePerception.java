@@ -18,7 +18,7 @@ public class VampirePerception extends AbstractPerception {
 		StimulusBag b = new StimulusBag(0.0);
 		
 		Stimulus s = this.detectNearestMapBorder(beings);
-		if( s.getIntensity() > 0.9 )
+		if( s.getIntensity() > 0.95 )
 			b.offer(SimulationConstants.PERC_MAPBORDER, s);
 		
 		Bag bag = beings.yard.getNeighborsWithinDistance(h.getPosition(), h.getPerceptionSkills());

@@ -38,7 +38,7 @@ public class SimulationConstants {
 	
 	// Interactions Dist
 	public final static double	DIST_NEAR =					0.1;
-	public final static double	DIST_INTERACT =				0.2;
+	public final static double	DIST_INTERACT =				0.4;
 	public final static double	DIST_SECURE =				10.0;
 	
 	// Gain

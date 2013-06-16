@@ -95,14 +95,6 @@ public class Human extends Agent {
 	/*
 	 * Getters et Setters
 	 */
-	public AbstractMetabolism getMetabolism() {return metabolism;}
-	public void setMetabolism(AbstractMetabolism metabolism) {this.metabolism = metabolism;}
-	public AbstractPerception getPerception() {return perception;}
-	public void setPerception(AbstractPerception perception) {this.perception = perception;}
-	public AbstractDecision getDecision() {return decision;}
-	public void setDecision(AbstractDecision decision) {this.decision = decision;}
-	public Behaviour getBehaviour() {return behaviour;}
-	public void setBehaviour(Behaviour behaviour) {this.behaviour = behaviour;}
 	public double getEnergy() {return energy;}
 	public void setEnergy(double energy) {
 		this.energy = Math.max(0, Math.min(SimulationConstants.CHAR_MAX_ENERGY, energy));
@@ -115,6 +107,7 @@ public class Human extends Agent {
 	public void setSocial(double social) {
 		this.social = Math.max(0, Math.min(SimulationConstants.CHAR_MAX_SOCIAL, social));
 	}
+	public ArrayList<Human> getKnownVampire(){return this.knownVampire;}
 	public double getPrioCoefEnergy() {return prioCoefEnergy;}
 	public void setPrioCoefEnergy(double prioCoefEnergy) {this.prioCoefEnergy = prioCoefEnergy;}
 	public double getPrioCoefAwake() {return prioCoefAwake;}
@@ -127,8 +120,15 @@ public class Human extends Agent {
 	public void setSpeed(double speed) {this.speed = speed;}
 	public double getGlobalHealth() {return globalHealth;}
 	public void setGlobalHealth(double globalHealth) {this.globalHealth = globalHealth;}
-	public ArrayList<Human> getKnownVampire(){return this.knownVampire;}
 	public double getTimeLife() {return timeLife;}
+	public AbstractMetabolism getMetabolism() {return metabolism;}
+	public void setMetabolism(AbstractMetabolism metabolism) {this.metabolism = metabolism;}
+	public AbstractPerception getPerception() {return perception;}
+	public void setPerception(AbstractPerception perception) {this.perception = perception;}
+	public AbstractDecision getDecision() {return decision;}
+	public void setDecision(AbstractDecision decision) {this.decision = decision;}
+	public Behaviour getBehaviour() {return behaviour;}
+	public void setBehaviour(Behaviour behaviour) {this.behaviour = behaviour;}
 
 	/*
 	 * Step Method

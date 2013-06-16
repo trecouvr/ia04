@@ -54,16 +54,6 @@ public class Beings extends SimState {
 				if(sc.hasNext()){
 					Human h = new Human(randomFreeLocation(), sc.next());
 					
-					if (i==0){
-						//First human know every vampire
-						for (Object o: yard.allObjects){
-							if (o instanceof Human && ((Human) o).isVampire()) {
-								h.addKnownVampire((Human)o);
-							}
-							
-						}
-						
-					}
 					addAgent(h);
 				}
 				else System.out.println("Pas assez d'amis !!");

@@ -16,7 +16,6 @@ public class VampireDecision extends AbstractDecision {
 
 	public VampireDecision(Human h) {
 		super(h);
-		// TODO Auto-generated constructor stub
 	}
 
 	public void makeDecision(Beings beings, StimulusBag b) {
@@ -51,15 +50,11 @@ public class VampireDecision extends AbstractDecision {
 					newBeh = new CompositeBehaviour(h,
 								new WalkNearAgentBehaviour(h, (Agent)s.getSource(), SimulationConstants.DIST_NEAR),
 								new EatHumanBehaviour(h, (Human)s.getSource()));
-					experimentedGain = this.getExperimentedGain(newBeh);
 				}
 				else{
 					//System.out.println("on va au hasard");
 					newBeh = new WalkInDirectionBehaviour(this.h, beings.random.nextDouble()*Math.PI*2);	// Default Behaviour
 				}
-				
-				/*if( experimentedGain != null && experimentedGain < 0 )
-					newBeh = null;*/
 				
 				hightCat = b.getCategoryOfHightStimulus();
 				s = b.poll(hightCat);

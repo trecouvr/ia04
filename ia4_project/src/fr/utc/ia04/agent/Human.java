@@ -144,8 +144,7 @@ public class Human extends Agent {
 		double dt = SimulationConstants.ENV_DT;
 		
 		// Death Conditions
-		//if(awake<=0 || energy<=0 || social<=0)
-			//die((Beings)arg0);
+	
 		
 		// Metabolism
 		metabolism.doAction(dt);
@@ -162,6 +161,9 @@ public class Human extends Agent {
 		// Update Time Life
 		this.timeLife += dt;
 		
+		
+		if(this.globalHealth <=0)
+			die((Beings)arg0);
 	}
 	
 	/*
@@ -244,7 +246,7 @@ public class Human extends Agent {
 			label= this.name + " (" + (int)(this.globalHealth*100) + ")";
 		}
 		else{
-			label= this.name + " (" + (int)(this.globalHealth*100) + ")|"+this.knownVampire.size();
+			label= this.name + " (" + (int)(this.globalHealth*100) + ") |"+this.knownVampire.size();
 		}
 		
 		return label;

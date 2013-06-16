@@ -234,6 +234,8 @@ public class Human extends Agent {
 		this.metabolism = new VampireMetabolism(this);
 		this.social=SimulationConstants.CHAR_MAX_SOCIAL;
 		this.awake=SimulationConstants.CHAR_MAX_AWAKE;
+		this.prioCoefSocial = 0.0;
+		this.prioCoefAwake = 0.0;
 		this.decision = new VampireDecision(this);
 		this.perception = new VampirePerception(this);
 	}

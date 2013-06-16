@@ -17,7 +17,7 @@ public class EatHumanBehaviour extends ProximityBehaviour {
 	
 	@Override
 	public boolean preCond() {
-		return h.isVampire();
+		return (h.isVampire() && !other.isVampire());
 	}
 
 	@Override
@@ -40,7 +40,7 @@ public class EatHumanBehaviour extends ProximityBehaviour {
 	
 	@Override
 	public boolean isDone() {
-		return (h.getEnergy() >= SimulationConstants.CHAR_MAX_ENERGY || other.isVampire() || other.getEnergy()==0);
+		return (h.getPrioCoefEnergy() <= 0.1 || other.isVampire() || other.getEnergy()<=0);
 	}
 
 }

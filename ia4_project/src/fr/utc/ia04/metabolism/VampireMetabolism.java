@@ -15,7 +15,7 @@ public class VampireMetabolism extends AbstractMetabolism {
 		h.setEnergy(h.getEnergy() -	SimulationConstants.METABOLISM_COEF_ENERGY*dt);
 		
 		// Priotity Part
-		h.setPrioCoefEnergy(2*h.getEnergy()/100 );
+		h.setPrioCoefEnergy(1-h.getEnergy()/SimulationConstants.CHAR_MAX_ENERGY);
 		
 		setGlobalHealth();
 	}

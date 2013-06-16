@@ -58,8 +58,8 @@ public class VampireDecision extends AbstractDecision {
 					newBeh = new WalkInDirectionBehaviour(this.h, beings.random.nextDouble()*Math.PI*2);	// Default Behaviour
 				}
 				
-				if( experimentedGain != null && experimentedGain < 0 )
-					newBeh = null;
+				/*if( experimentedGain != null && experimentedGain < 0 )
+					newBeh = null;*/
 				
 				hightCat = b.getCategoryOfHightStimulus();
 				s = b.poll(hightCat);

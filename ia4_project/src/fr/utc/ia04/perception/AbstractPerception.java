@@ -1,5 +1,8 @@
 package fr.utc.ia04.perception;
 
+import java.util.ArrayList;
+
+import sim.util.Bag;
 import sim.util.Double2D;
 import fr.utc.ia04.Module;
 import fr.utc.ia04.agent.Agent;
@@ -8,7 +11,10 @@ import fr.utc.ia04.simulation.Beings;
 import fr.utc.ia04.simulation.SimulationConstants;
 
 public abstract class AbstractPerception extends Module {
-
+	
+	public ArrayList<Agent> agentsInRange = new ArrayList<Agent>();
+	
+	
 	/*
 	 * Constructor
 	 */
@@ -20,6 +26,16 @@ public abstract class AbstractPerception extends Module {
 	 * Abstract Method
 	 */
 	public abstract StimulusBag makePerception(Beings beings, double dt);
+	
+	public void fillAgentsInRange(Beings beings) {
+		agentsInRange.clear();
+		Bag bag = beings.yard.getNeighborsWithinDistance(h.getPosition(), h.getPerceptionSkills());
+		for (Object o : bag) {
+			if (o instanceof Agent && o != h) {
+				agentsInRange.add((Agent)o);
+			}
+		}
+	}
 	
 	/*
 	 * Method tools

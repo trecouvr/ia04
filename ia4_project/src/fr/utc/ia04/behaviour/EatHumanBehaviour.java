@@ -1,5 +1,6 @@
 package fr.utc.ia04.behaviour;
 
+import sim.util.Bag;
 import fr.utc.ia04.agent.Human;
 import fr.utc.ia04.simulation.Beings;
 import fr.utc.ia04.simulation.SimulationConstants;
@@ -23,10 +24,15 @@ public class EatHumanBehaviour extends ProximityBehaviour {
 	@Override
 	public void doAction(Beings b, double dt) {
 		// TODO fixer coeffs
-		other.setEnergy(other.getEnergy()-dt*2.0);  // décrémente l'énergy de l'humain
-		h.setEnergy(h.getEnergy()+dt*6.0);			// monte l'énergy du vampire
+		other.setEnergy(other.getEnergy()-dt*SimulationConstants.VAMPIRE_ATTAK);  // décrémente l'énergy de l'humain
+		h.setEnergy(h.getEnergy()+dt*SimulationConstants.VAMPIRE_REGEN);			// monte l'énergy du vampire
 		
-		other.addKnownVampire(h);
+		Bag bag = b.yard.getNeighborsWithinDistance(h.getPosition(), SimulationConstants.DIST_MEDIUM);
+		for (Object o : bag) {
+			if (o instanceof Human) {
+				((Human)o).addKnownVampire(h);
+			}
+		}
 		if (this.chanceToGetVampire <= 0.1){
 			other.makeVampire();
 		}

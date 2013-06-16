@@ -18,7 +18,7 @@ public class SimulationConstants {
 	public final static double	DISP_SCALE_AGT =				0.6;
 
 	// Proportion Agent
-	public final static int		NUM_HUMAN =					10;//3;
+	public final static int		NUM_HUMAN =					30;//3;
 	public final static int		NUM_VAMPIRES =				1;//0;
 	public final static int		NUM_FASTFOOD =				3;//2;
 	public final static int 	NUM_HOTEL =					3;
@@ -39,6 +39,7 @@ public class SimulationConstants {
 	// Interactions Dist
 	public final static double	DIST_NEAR =					0.1;
 	public final static double	DIST_INTERACT =				0.4;
+	public final static double	DIST_MEDIUM =				4.0;
 	public final static double	DIST_SECURE =				10.0;
 	
 	// Gain
@@ -64,5 +65,9 @@ public class SimulationConstants {
 	public static final String  STATE_EATINGHUM =			"eat_hum";
 	public static final String  STATE_ATTAKING =			"attak";
 	public static final String  STATE_RUNNINGAWAY =			"run_away";
-
+	
+	public static final double	HUMAN_ATTK =				.50;
+	public static final double	VAMPIRE_REGEN =				2.0;
+	public static final double	VAMPIRE_ATTAK =				2.0;
+	public static final int		HUMAN_MIN_NUMBER_TO_ATTK =	5;
 }

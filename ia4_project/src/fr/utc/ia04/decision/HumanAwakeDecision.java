@@ -4,6 +4,7 @@ import fr.utc.ia04.agent.Agent;
 import fr.utc.ia04.agent.FastFood;
 import fr.utc.ia04.agent.Hotel;
 import fr.utc.ia04.agent.Human;
+import fr.utc.ia04.behaviour.AttakBehaviour;
 import fr.utc.ia04.behaviour.Behaviour;
 import fr.utc.ia04.behaviour.CompositeBehaviour;
 import fr.utc.ia04.behaviour.speBehaviour.EatBehaviour;
@@ -60,7 +61,24 @@ public class HumanAwakeDecision extends AbstractDecision {
 					newBeh = new CompositeBehaviour(h,new WalkNearAgentBehaviour(h, (Hotel)s.getSource(), SimulationConstants.DIST_NEAR),new SleepBehaviour(h, (Hotel)s.getSource()));
 				}
 				else if( hightCat.equals( SimulationConstants.PERC_VAMPIRE)){		// Vampire risk
-					newBeh = new RunAwayBehaviour(h, (Agent)s.getSource());
+					Human vampire = (Human)s.getSource();
+					int nbHumans = 0;
+					for (Agent a : h.getPerception().agentsInRange) {
+						if (a instanceof Human) {
+							if (((Human)a).knowThisVampire(vampire)) {
+								++nbHumans;
+							}
+						}
+					}
+					if (nbHumans < SimulationConstants.HUMAN_MIN_NUMBER_TO_ATTK) {
+						newBeh = new RunAwayBehaviour(h, (Agent)s.getSource());
+					}
+					else {
+						newBeh = new CompositeBehaviour(h, 
+							new WalkNearAgentBehaviour(h, (Agent)s.getSource(), SimulationConstants.DIST_NEAR),
+							new AttakBehaviour(h, (Human)s.getSource())
+						);
+					}
 				}
 				else{
 					newBeh = new WalkInDirectionBehaviour(this.h, beings.random.nextDouble()*Math.PI*2);	// Default Behaviour

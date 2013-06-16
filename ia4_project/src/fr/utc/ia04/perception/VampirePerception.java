@@ -14,6 +14,7 @@ public class VampirePerception extends AbstractPerception {
 
 	@Override
 	public StimulusBag makePerception(Beings beings, double dt) {
+		fillAgentsInRange(beings);
 		
 		StimulusBag b = new StimulusBag(0.0);
 		

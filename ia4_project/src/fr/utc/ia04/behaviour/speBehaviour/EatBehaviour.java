@@ -27,5 +27,4 @@ public class EatBehaviour extends ProximityBehaviour {
 	public boolean isDone() {
 		return h.getPrioCoefEnergy() <= 0.1;
 	}
-
 }

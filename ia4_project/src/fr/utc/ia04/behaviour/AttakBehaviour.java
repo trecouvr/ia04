@@ -9,13 +9,13 @@ public class AttakBehaviour extends ProximityBehaviour {
 	protected Human other = null;
 	
 	public AttakBehaviour(Human h, Human o) {
-		super(h, SimulationConstants.STATE_ATTAKING, o, SimulationConstants.DIST_NEAR);
+		super(h, SimulationConstants.STATE_ATTAKING, o, SimulationConstants.DIST_INTERACT);
 		this.other = o;
 	}
 
 	@Override
 	public void doAction(Beings b, double dt) {
-		other.setEnergy(other.getEnergy()-dt);
+		other.setEnergy(other.getEnergy()-dt*SimulationConstants.HUMAN_ATTK);
 	}
 
 	@Override

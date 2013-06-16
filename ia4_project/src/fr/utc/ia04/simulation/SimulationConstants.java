@@ -15,10 +15,10 @@ public class SimulationConstants {
 	
 	// Display
 	public final static double	DISP_SCALE_IMG =				1;
-	public final static double	DISP_SCALE_AGT =				0.6;
+	public final static double	DISP_SCALE_AGT =				0.3;
 
 	// Proportion Agent
-	public final static int		NUM_HUMAN =					100;//3;
+	public final static int		NUM_HUMAN =					40;//3;
 	public final static int		NUM_VAMPIRES =				1;//0;
 	public final static int		NUM_FASTFOOD =				3;//2;
 	public final static int 	NUM_HOTEL =					3;
@@ -67,7 +67,8 @@ public class SimulationConstants {
 	public static final String  STATE_RUNNINGAWAY =			"run_away";
 	
 	public static final double	HUMAN_ATTK =				.50;
-	public static final double	VAMPIRE_REGEN =				2.0;
-	public static final double	VAMPIRE_ATTAK =				2.0;
+	public static final double	VAMPIRE_REGEN =				2.5;
+	public static final double	VAMPIRE_ATTAK =				2.5;
 	public static final int		HUMAN_MIN_NUMBER_TO_ATTK =	5;
+	public static boolean 		HUMAN_ALWAYSRUN	=			false;
 }

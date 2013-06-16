@@ -70,7 +70,7 @@ public class HumanAwakeDecision extends AbstractDecision {
 							}
 						}
 					}
-					if (nbHumans < SimulationConstants.HUMAN_MIN_NUMBER_TO_ATTK) {
+					if (SimulationConstants.HUMAN_ALWAYSRUN || nbHumans < SimulationConstants.HUMAN_MIN_NUMBER_TO_ATTK) {
 						newBeh = new RunAwayBehaviour(h, (Agent)s.getSource());
 					}
 					else {

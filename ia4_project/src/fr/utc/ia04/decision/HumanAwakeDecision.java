@@ -44,7 +44,7 @@ public class HumanAwakeDecision extends AbstractDecision {
 		
 		else{
 			
-			while( hightCat != null && ( newBeh==null || newBeh.isDone() ) && ( changeBeh || h.getBehaviour().evalGain() + 0.1 < s.getIntensity() ) ){
+			while( hightCat != null && ( newBeh==null || newBeh.isDone() ) && ( changeBeh || h.getBehaviour().evalGain() + 0.05 < s.getIntensity() ) ){
 				
 				Double experimentedGain = null;
 				
@@ -71,8 +71,8 @@ public class HumanAwakeDecision extends AbstractDecision {
 					newBeh = new WalkInDirectionBehaviour(this.h, beings.random.nextDouble()*Math.PI*2);	// Default Behaviour
 				}
 				
-				if( experimentedGain != null && experimentedGain < 0 )
-					newBeh = null;
+				//if( experimentedGain != null && experimentedGain < 0 )
+					//newBeh = null;
 				
 				hightCat = b.getCategoryOfHightStimulus();
 				s = b.poll(hightCat);

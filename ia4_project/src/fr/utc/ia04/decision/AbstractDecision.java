@@ -44,6 +44,7 @@ public abstract class AbstractDecision extends Module {
 			this.memory.addExp(b, gain);
 		
 			// Change Procedure
+			System.out.println("Change " + b);
 			h.setBehaviour(b);
 		}
 	}

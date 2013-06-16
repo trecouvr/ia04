@@ -25,6 +25,6 @@ public class SleepBehaviour extends ProximityBehaviour {
 	
 	@Override
 	public boolean isDone() {
-		return h.getAwake() >= SimulationConstants.CHAR_MAX_AWAKE;
+		return h.getPrioCoefAwake() <= 0.1;
 	}
 }

@@ -144,8 +144,7 @@ public class Human extends Agent {
 		double dt = SimulationConstants.ENV_DT;
 		
 		// Death Conditions
-		//if(awake<=0 || energy<=0 || social<=0)
-			//die((Beings)arg0);
+	
 		
 		// Metabolism
 		metabolism.doAction(dt);
@@ -162,6 +161,9 @@ public class Human extends Agent {
 		// Update Time Life
 		this.timeLife += dt;
 		
+		
+		if(this.globalHealth <=0)
+			die((Beings)arg0);
 	}
 	
 	/*
@@ -239,7 +241,14 @@ public class Human extends Agent {
 	//toString method to display the labelled Portrayal of Human Agent
 	public String toString(){
 		//String label = "" + (int)(this.globalHealth*100);
-		String label = this.name + " (" + (int)(this.energy*9)+ (int)(this.awake*9)+ (int)(this.social*9) + ")";
+		String label;
+		if (this.isVampire){
+			label= this.name + " (" + (int)(this.globalHealth*100) + ")";
+		}
+		else{
+			label= this.name + " (" + (int)(this.globalHealth*100) + ") |"+this.knownVampire.size();
+		}
+		
 		return label;
 	}
 	

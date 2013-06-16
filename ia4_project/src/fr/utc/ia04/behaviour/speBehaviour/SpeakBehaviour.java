@@ -6,19 +6,20 @@ import fr.utc.ia04.simulation.Beings;
 import fr.utc.ia04.simulation.SimulationConstants;
 
 public class SpeakBehaviour extends ProximityBehaviour {
-	
+	protected double chanceToHaveInfo;
 	protected Human other = null;
 	protected int nbStep = 0 ;
 	
 	public SpeakBehaviour(Human h, Human other) {
 		super(h, SimulationConstants.STATE_SPEAKING, other, SimulationConstants.DIST_INTERACT);
+		this.chanceToHaveInfo = Math.random();
 		this.other = other;
 	}
 	
 	@Override
 	public void doAction(Beings b, double dt) {
-		h.setSocial(h.getSocial()+dt); // TODO régler le coeff
-		// TODO partager les infos sur les vampires
+		h.setSocial(h.getSocial()+dt*0.2); // TODO régler le coeff
+		
 		nbStep++;
 		
 		int probability;
@@ -33,7 +34,7 @@ public class SpeakBehaviour extends ProximityBehaviour {
 		}
 		
 		
-		if (Math.random() < probability && h.knowSomeone()) //Si l'acteur connaît au moins un vampire et que la proba est respectée alors l'acteur échange des infos
+		if (this.chanceToHaveInfo < probability && h.knowSomeone()) //Si l'acteur connaît au moins un vampire et que la proba est respectée alors l'acteur échange des infos
 		{
 				Human vamp = h.pickARandomKnownVampire();
 				this.other.addKnownVampire(vamp);
@@ -45,12 +46,21 @@ public class SpeakBehaviour extends ProximityBehaviour {
 
 	@Override
 	public double evalGain() {
-		return SimulationConstants.GAIN_HIGHT;
+		if (this.nbStep < 3){
+			return SimulationConstants.GAIN_LOW;
+		}
+		else if (this.nbStep >= 3 && this.nbStep < 6){
+			return 2* SimulationConstants.GAIN_LOW;
+		}
+		else {
+			return SimulationConstants.GAIN_HIGHT;
+		}
+		
 	}
 	
 	@Override
 	public boolean isDone() {
-		return h.getSocial() >= SimulationConstants.CHAR_MAX_SOCIAL;
+		return h.getPrioCoefSocial() <= 0.1;
 	}
 
 }

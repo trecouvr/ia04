@@ -97,7 +97,7 @@ public class BehavioursMemory {
 			BehMemory m = new BehMemory();
 			m.addNewExp(gain);
 			this.behList.add(new Foo(b, m));
-			System.out.println(b.getClass().getName() + " --> " + gain);
+			//System.out.println(b.getClass().getName() + " --> " + gain);
 		}
 		else{
 			f.mem.addNewExp(gain);

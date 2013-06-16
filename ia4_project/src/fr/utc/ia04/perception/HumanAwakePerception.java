@@ -28,16 +28,17 @@ public class HumanAwakePerception extends AbstractPerception {
 			if(o != h) {
 				
 				if (o instanceof Human) {
-					//if (h.knowThisVampire((Human)o)){
+					if (h.knowThisVampire((Human)o)){
 					// TODO
-					//if (((Human)o).isVampire()){
-					//	b.offer(SimulationConstants.PERC_VAMPIRE, new Stimulus( -1 /*0.3*this.distanceIntensity((Human)o)*/ , o));
-					//}
-					//else{
+					if (((Human)o).isVampire()){
+						b.offer(SimulationConstants.PERC_VAMPIRE, new Stimulus( 0.3*this.distanceIntensity((Human)o) , o));
+					}
+					else{
 						b.offer(SimulationConstants.PERC_HUMAN, new Stimulus( 0.3*this.distanceIntensity((Human)o) + 0.7*h.getPrioCoefSocial(), o) );
-					//}
-
+					}
 				}
+
+			}
 				else if (o instanceof FastFood) {
 					b.offer(SimulationConstants.PERC_FASTFOOD, new Stimulus( 0.3*this.distanceIntensity((FastFood)o) + 0.7*h.getPrioCoefEnergy(), o) );
 				}

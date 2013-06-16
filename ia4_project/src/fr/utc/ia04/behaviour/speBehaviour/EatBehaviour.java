@@ -25,7 +25,7 @@ public class EatBehaviour extends ProximityBehaviour {
 	
 	@Override
 	public boolean isDone() {
-		return h.getEnergy() >= SimulationConstants.CHAR_MAX_ENERGY;
+		return h.getPrioCoefEnergy() <= 0.1;
 	}
 
 }

@@ -17,7 +17,7 @@ public class SpeakBehaviour extends ProximityBehaviour {
 	
 	@Override
 	public void doAction(Beings b, double dt) {
-		h.setSocial(h.getSocial()+dt); // TODO régler le coeff
+		h.setSocial(h.getSocial()+dt*0.2); // TODO régler le coeff
 		// TODO partager les infos sur les vampires
 		nbStep++;
 		
@@ -50,7 +50,7 @@ public class SpeakBehaviour extends ProximityBehaviour {
 	
 	@Override
 	public boolean isDone() {
-		return h.getSocial() >= SimulationConstants.CHAR_MAX_SOCIAL;
+		return h.getPrioCoefSocial() <= 0.1;
 	}
 
 }

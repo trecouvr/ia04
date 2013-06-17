@@ -19,7 +19,7 @@ public class SimulationConstants {
 	public final static boolean	DISP_SHOW_NAMES =			false;
 	
 	// Proportion Agent
-	public final static int		NUM_HUMAN =					200;//3;
+	public final static int		NUM_HUMAN =					100;//3;
 	public final static int		NUM_VAMPIRES =				1;//0;
 	public final static int		NUM_FASTFOOD =				4;//2;
 	public final static int 	NUM_HOTEL =					4;
@@ -37,12 +37,13 @@ public class SimulationConstants {
 	public final static double	METABOLISM_COEF_ENERGY =	1.0/48;
 	public final static double	METABOLISM_COEF_AWAKE =		1.0/72;
 	public final static double	METABOLISM_COEF_SOCIAL =	1.0/200;
-	public static final double	HUMAN_ATTK =				.50;
-	public static final double	VAMPIRE_REGEN =				2.5;
-	public static final double	VAMPIRE_ATTAK =				2.5;
-	public static final int		HUMAN_MIN_NUMBER_TO_ATTK =	5;
+	public static final double	HUMAN_ATTK =				.50; // damages per hours
+	public static final double	VAMPIRE_REGEN =				1.; // damages per hours
+	public static final double	VAMPIRE_ATTAK =				1.; // damages per hours
+	public static final int		HUMAN_MIN_NUMBER_TO_ATTK =	4;
 	public static boolean 		HUMAN_ALWAYSRUN	=			true;
 	public static boolean		HUMAN_SEE_ATTACK =			false;
+	public static boolean		VAMPIRE_ALWAYS_FINISH =		false; // vampire always kill his target even if he doesnt need energy
 	
 	// Interactions Dist
 	public final static double	DIST_NEAR =					0.1;

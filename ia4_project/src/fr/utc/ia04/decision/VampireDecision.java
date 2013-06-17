@@ -4,7 +4,7 @@ import fr.utc.ia04.agent.Agent;
 import fr.utc.ia04.agent.Human;
 import fr.utc.ia04.behaviour.Behaviour;
 import fr.utc.ia04.behaviour.CompositeBehaviour;
-import fr.utc.ia04.behaviour.EatHumanBehaviour;
+import fr.utc.ia04.behaviour.speBehaviour.EatHumanBehaviour;
 import fr.utc.ia04.behaviour.speBehaviour.WalkInDirectionBehaviour;
 import fr.utc.ia04.behaviour.speBehaviour.WalkNearAgentBehaviour;
 import fr.utc.ia04.perception.Stimulus;
